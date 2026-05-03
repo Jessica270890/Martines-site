@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martines — Gestion administrative tout-en-un</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bordeaux: #6B1F30;
+  --bordeaux-dark: #4a1520;
+  --bordeaux-light: #8B2F42;
+  --creme: #FAF8F5;
+  --creme-dark: #F0EDE8;
+  --text: #2C2018;
+  --text-muted: #7A6E68;
+  --text-light: #A89E98;
+  --white: #FFFFFF;
+  --border: rgba(107,31,48,0.12);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--creme); color: var(--text); overflow-x: hidden; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,248,245,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 6%; height: 66px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--bordeaux); letter-spacing: -0.5px; text-decoration: none; }
+.nav-logo span { font-size: 10px; font-family: 'DM Sans', sans-serif; font-weight: 300; color: var(--text-muted); display: block; letter-spacing: 0.18em; text-transform: uppercase; margin-top: -3px; }
+.nav-links { display: flex; align-items: center; gap: 36px; }
+.nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; font-weight: 400; }
+.nav-links a:hover { color: var(--bordeaux); }
+.nav-cta { display: flex; gap: 10px; align-items: center; }
+.btn-ghost { padding: 9px 22px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; color: var(--text); background: none; cursor: pointer; font-family: 'DM Sans', sans-serif; text-decoration: none; transition: all 0.2s; }
+.btn-ghost:hover { border-color: var(--bordeaux); color: var(--bordeaux); }
+.btn-main { padding: 9px 22px; background: var(--bordeaux); color: white; border: none; border-radius: 6px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; transition: background 0.2s; font-weight: 500; }
+.btn-main:hover { background: var(--bordeaux-dark); }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 6% 60px; background: var(--creme); }
+.hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(107,31,48,0.07); color: var(--bordeaux); font-size: 12px; font-weight: 500; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; letter-spacing: 0.04em; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(38px, 4.5vw, 58px); font-weight: 500; line-height: 1.12; color: var(--text); margin-bottom: 22px; }
+.hero h1 em { font-style: italic; color: var(--bordeaux); }
+.hero p { font-size: 17px; color: var(--text-muted); line-height: 1.75; margin-bottom: 38px; font-weight: 300; max-width: 480px; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
+.btn-hero { padding: 15px 32px; background: var(--bordeaux); color: white; border: none; border-radius: 8px; font-size: 15px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; transition: background 0.2s; font-weight: 500; display: inline-block; }
+.btn-hero:hover { background: var(--bordeaux-dark); }
+.btn-hero-outline { padding: 15px 32px; border: 1.5px solid var(--bordeaux); color: var(--bordeaux); border-radius: 8px; font-size: 15px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; background: none; transition: all 0.2s; font-weight: 500; display: inline-block; }
+.btn-hero-outline:hover { background: var(--bordeaux); color: white; }
+.hero-note { font-size: 13px; color: var(--text-light); line-height: 1.8; }
+.hero-note span { margin: 0 4px; }
+
+/* APP MOCKUP */
+.app-mockup { background: white; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 24px 80px rgba(107,31,48,0.14), 0 4px 20px rgba(0,0,0,0.06); }
+.app-bar { background: var(--bordeaux); padding: 11px 18px; display: flex; align-items: center; gap: 10px; }
+.app-dots { display: flex; gap: 5px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; }
+.app-title { font-size: 12px; color: rgba(255,255,255,0.75); font-weight: 400; margin-left: 4px; }
+.app-body { display: flex; }
+.app-sidebar { width: 150px; background: #3d1020; padding: 14px 0; flex-shrink: 0; }
+.sidebar-item { padding: 8px 16px; font-size: 11px; color: rgba(255,255,255,0.55); cursor: default; display: flex; align-items: center; gap: 7px; }
+.sidebar-item.active { background: rgba(255,255,255,0.1); color: white; font-weight: 500; }
+.app-content { flex: 1; padding: 16px; background: #FAF9F7; }
+.app-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 12px; }
+.stat-box { background: white; border-radius: 8px; padding: 11px 12px; border: 1px solid #EEE; }
+.stat-n { font-size: 20px; font-weight: 600; color: var(--bordeaux); line-height: 1; }
+.stat-l { font-size: 9px; color: #999; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3px; }
+.app-row { background: white; border-radius: 7px; padding: 9px 12px; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #EEE; }
+.row-name { font-size: 12px; font-weight: 500; color: var(--text); }
+.row-sub { font-size: 10px; color: #999; margin-top: 1px; }
+.row-badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
+.row-amount { font-size: 12px; font-weight: 500; color: var(--bordeaux); white-space: nowrap; }
+
+/* WHY */
+.why { background: var(--bordeaux); padding: 80px 6%; }
+.why-inner { max-width: 1200px; margin: 0 auto; }
+.why-header { text-align: center; margin-bottom: 56px; }
+.why-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 500; color: white; margin-bottom: 12px; }
+.why-header p { font-size: 16px; color: rgba(255,255,255,0.6); font-weight: 300; }
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+.why-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 32px 28px; }
+.why-num { font-family: 'Playfair Display', serif; font-size: 44px; color: rgba(255,255,255,0.15); font-weight: 600; line-height: 1; margin-bottom: 16px; }
+.why-title { font-size: 17px; font-weight: 500; color: white; margin-bottom: 10px; }
+.why-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; }
+
+/* CONTACT */
+.contact { padding: 80px 6%; background: var(--creme-dark); }
+.contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+.contact-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 40px); font-weight: 500; margin-bottom: 14px; }
+.contact-inner p { font-size: 16px; color: var(--text-muted); margin-bottom: 36px; font-weight: 300; line-height: 1.7; }
+.contact-form { background: white; border-radius: 16px; padding: 36px; border: 1px solid var(--border); text-align: left; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 16px; }
+.form-group.full { grid-column: 1/-1; }
+.form-label { font-size: 11px; font-weight: 500; color: var(--text); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+.form-input { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--creme); outline: none; transition: border-color 0.2s; }
+.form-input:focus { border-color: var(--bordeaux); }
+textarea.form-input { resize: vertical; min-height: 110px; }
+.form-btn { width: 100%; padding: 13px; background: var(--bordeaux); color: white; border: none; border-radius: 8px; font-size: 15px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: background 0.2s; margin-top: 4px; }
+.form-btn:hover { background: var(--bordeaux-dark); }
+
+/* CTA BAND */
+.cta-band { background: var(--bordeaux-dark); padding: 60px 6%; text-align: center; }
+.cta-band h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 2.5vw, 36px); font-weight: 500; color: white; margin-bottom: 12px; }
+.cta-band p { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 28px; font-weight: 300; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-cta-white { padding: 13px 28px; background: white; color: var(--bordeaux); border: none; border-radius: 8px; font-size: 15px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; font-weight: 500; transition: opacity 0.2s; display: inline-block; }
+.btn-cta-white:hover { opacity: 0.9; }
+.btn-cta-outline { padding: 13px 28px; border: 1.5px solid rgba(255,255,255,0.4); color: white; border-radius: 8px; font-size: 15px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; background: none; transition: all 0.2s; display: inline-block; }
+.btn-cta-outline:hover { background: rgba(255,255,255,0.1); }
+
+/* FOOTER */
+footer { background: #2C1018; padding: 36px 6%; }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: rgba(255,255,255,0.85); text-decoration: none; }
+.footer-logo span { font-size: 10px; font-family: 'DM Sans', sans-serif; color: rgba(255,255,255,0.3); display: block; letter-spacing: 0.12em; text-transform: uppercase; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: white; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 200; align-items: center; justify-content: center; }
+.modal-overlay.open { display: flex; }
+.modal { background: white; border-radius: 16px; padding: 40px; width: 100%; max-width: 420px; margin: 16px; position: relative; }
+.modal-logo { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--bordeaux); margin-bottom: 4px; }
+.modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 28px; }
+.m-form-group { margin-bottom: 16px; }
+.m-label { font-size: 11px; font-weight: 500; color: var(--text); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+.m-input { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--creme); outline: none; transition: border-color 0.2s; }
+.m-input:focus { border-color: var(--bordeaux); }
+.m-btn { width: 100%; padding: 13px; background: var(--bordeaux); color: white; border: none; border-radius: 8px; font-size: 15px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; margin-top: 8px; transition: background 0.2s; }
+.m-btn:hover { background: var(--bordeaux-dark); }
+.modal-footer-note { text-align: center; margin-top: 18px; font-size: 13px; color: var(--text-muted); }
+.modal-footer-note a { color: var(--bordeaux); text-decoration: none; font-weight: 500; }
+.modal-close { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 24px; color: var(--text-muted); cursor: pointer; line-height: 1; }
+
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Martines<span>Gestion administrative</span></a>
+  <div class="nav-links">
+    <a href="fonctionnalites.html">Fonctionnalités</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-cta">
+    <a href="#" class="btn-ghost" onclick="openModal('login');return false;">Se connecter</a>
+    <a href="#" class="btn-main" onclick="openModal('signup');return false;">Essai gratuit</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">✦ Conçu par une assistante, pour les assistantes</div>
+      <h1>Gérez votre activité administrative <em>en toute sérénité</em></h1>
+      <p>Martines réunit tout ce dont vous avez besoin : clients, facturation, agenda, fournisseurs et suivi commercial. Un seul outil, zéro dispersion.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-hero" onclick="openModal('signup');return false;">Commencer gratuitement</a>
+        <a href="tarifs.html" class="btn-hero-outline">Voir les tarifs</a>
+      </div>
+      <div class="hero-note">
+        ✓ Gratuit jusqu'à 3 clients <span>·</span> ✓ Sans carte bancaire <span>·</span> ✓ Sans engagement
+      </div>
+    </div>
+    <div class="app-mockup">
+      <div class="app-bar">
+        <div class="app-dots">
+          <div class="dot" style="background:#ff5f57"></div>
+          <div class="dot" style="background:#ffbd2e"></div>
+          <div class="dot" style="background:#28ca41"></div>
+        </div>
+        <span class="app-title">Tableau de bord — Martines</span>
+      </div>
+      <div class="app-body">
+        <div class="app-sidebar">
+          <div class="sidebar-item active">📊 Tableau de bord</div>
+          <div class="sidebar-item">👥 Clients</div>
+          <div class="sidebar-item">📋 Suivi factu.</div>
+          <div class="sidebar-item">⏱ Temps</div>
+          <div class="sidebar-item">📅 Agenda</div>
+          <div class="sidebar-item">🎯 Commercial</div>
+        </div>
+        <div class="app-content">
+          <div class="app-stats">
+            <div class="stat-box"><div class="stat-n">12</div><div class="stat-l">Clients</div></div>
+            <div class="stat-box"><div class="stat-n" style="font-size:15px">3 840€</div><div class="stat-l">CA/mois</div></div>
+            <div class="stat-box"><div class="stat-n">2</div><div class="stat-l">Tâches</div></div>
+          </div>
+          <div class="app-row">
+            <div><div class="row-name">BDB Platrerie</div><div class="row-sub">Mensuel récurrent</div></div>
+            <span class="row-badge" style="background:#FAECE7;color:#993C1D">Mensuel</span>
+            <div class="row-amount">280 €</div>
+          </div>
+          <div class="app-row">
+            <div><div class="row-name">Studio Créatif</div><div class="row-sub">Taux horaire</div></div>
+            <span class="row-badge" style="background:#EEEDFE;color:#3C3489">Horaire</span>
+            <div class="row-amount">4.5h×42€</div>
+          </div>
+          <div class="app-row">
+            <div><div class="row-name">Cabinet Dupont</div><div class="row-sub">Formation</div></div>
+            <span class="row-badge" style="background:#EAF3DE;color:#3B6D11">Formation</span>
+            <div class="row-amount">850 €</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="why-inner">
+    <div class="why-header">
+      <h2>Pourquoi choisir Martines ?</h2>
+      <p>Un outil pensé pour la réalité des assistantes indépendantes</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <div class="why-title">Conçu par une assistante</div>
+        <div class="why-desc">Martines est né d'un besoin réel. Chaque fonctionnalité a été pensée pour le quotidien des assistantes indépendantes, pas pour des comptables ou des commerciaux.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <div class="why-title">Tout en un, vraiment</div>
+        <div class="why-desc">Clients, facturation, temps, agenda, fournisseurs, commercial — tout au même endroit. Fini les 10 outils dispersés, les exports manuels et les tableaux Excel interminables.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <div class="why-title">Simple et accessible</div>
+        <div class="why-desc">Interface épurée, prise en main immédiate. Démarrez gratuitement avec 3 clients, sans carte bancaire ni engagement. Évoluez à votre rythme.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <h2>Nous contacter</h2>
+    <p>Une question, une suggestion, ou envie d'en savoir plus ? Écrivez-nous, nous répondons sous 24h.</p>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Prénom</label><input type="text" class="form-input" placeholder="Marie"></div>
+        <div class="form-group"><label class="form-label">Nom</label><input type="text" class="form-input" placeholder="Martin"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="marie@email.fr"></div>
+      <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" placeholder="Votre message..."></textarea></div>
+      <button class="form-btn">Envoyer le message</button>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2>Prête à simplifier votre quotidien ?</h2>
+  <p>Rejoignez les assistantes qui gèrent leur activité avec Martines.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-cta-white" onclick="openModal('signup');return false;">Commencer gratuitement</a>
+    <a href="tarifs.html" class="btn-cta-outline">Voir les tarifs</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Martines<span>Gestion administrative</span></a>
+    <div class="footer-links">
+      <a href="fonctionnalites.html">Fonctionnalités</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="#contact">Contact</a>
+      <a href="#">CGU</a>
+    </div>
+    <div class="footer-copy">© 2026 Martines · Fait avec passion</div>
+  </div>
+</footer>
+
+<!-- LOGIN -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('login')">×</button>
+    <div class="modal-logo">Martines</div>
+    <div class="modal-sub">Connectez-vous à votre espace</div>
+    <div class="m-form-group"><label class="m-label">Email</label><input type="email" class="m-input" placeholder="votre@email.fr"></div>
+    <div class="m-form-group"><label class="m-label">Mot de passe</label><input type="password" class="m-input" placeholder="••••••••"></div>
+    <button class="m-btn" onclick="window.location.href='https://app.martines.app'">Se connecter</button>
+    <div class="modal-footer-note">Pas encore de compte ? <a href="#" onclick="switchModal('login','signup');return false;">Créer un compte</a></div>
+  </div>
+</div>
+
+<!-- SIGNUP -->
+<div class="modal-overlay" id="signupModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('signup')">×</button>
+    <div class="modal-logo">Martines</div>
+    <div class="modal-sub">Créez votre compte gratuitement</div>
+    <div class="m-form-group"><label class="m-label">Nom</label><input type="text" class="m-input" placeholder="Votre nom"></div>
+    <div class="m-form-group"><label class="m-label">Email</label><input type="email" class="m-input" placeholder="votre@email.fr"></div>
+    <div class="m-form-group"><label class="m-label">Mot de passe</label><input type="password" class="m-input" placeholder="Minimum 6 caractères"></div>
+    <button class="m-btn" onclick="window.location.href='https://app.martines.app'">Créer mon compte</button>
+    <div class="modal-footer-note">Déjà un compte ? <a href="#" onclick="switchModal('signup','login');return false;">Se connecter</a></div>
+  </div>
+</div>
+
+<script>
+function openModal(t){document.getElementById(t+'Modal').classList.add('open');}
+function closeModal(t){document.getElementById(t+'Modal').classList.remove('open');}
+function switchModal(a,b){closeModal(a);setTimeout(()=>openModal(b),100);}
+document.querySelectorAll('.modal-overlay').forEach(m=>{m.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});});
+</script>
+</body>
+</html>
