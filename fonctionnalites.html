@@ -243,14 +243,15 @@ footer{background:#2C1018;padding:36px 6%;}
   </div>
 </div>
 <div class="modal-overlay" id="signupModal">
-  <div class="modal">
+  <div class="modal" id="signup-modal-inner">
     <button class="modal-close" onclick="closeModal('signup')">×</button>
     <div class="modal-logo">Martines</div>
-    <div class="modal-sub">Créez votre compte gratuitement</div>
-    <div class="m-form-group"><label class="m-label">Nom</label><input type="text" class="m-input" placeholder="Votre nom"></div>
-    <div class="m-form-group"><label class="m-label">Email</label><input type="email" class="m-input" placeholder="votre@email.fr"></div>
-    <div class="m-form-group"><label class="m-label">Mot de passe</label><input type="password" class="m-input" placeholder="Minimum 6 caractères"></div>
-    <button class="m-btn" onclick="window.location.href='https://app.martines.app'">Créer mon compte</button>
+    <div class="modal-sub">Rejoignez la liste d'attente</div>
+    <div class="m-form-group"><label class="m-label">Prénom</label><input type="text" id="signup-prenom" class="m-input" placeholder="Marie"></div>
+    <div class="m-form-group"><label class="m-label">Nom</label><input type="text" id="signup-nom" class="m-input" placeholder="Martin"></div>
+    <div class="m-form-group"><label class="m-label">Email</label><input type="email" id="signup-email" class="m-input" placeholder="marie@email.fr"></div>
+    <div id="signup-error" style="font-size:13px;color:#c0392b;margin-bottom:8px;min-height:18px"></div>
+    <button class="m-btn" onclick="submitWaitingList()">Rejoindre la liste d'attente</button>
     <div class="modal-footer-note">Déjà un compte ? <a href="#" onclick="switchModal('signup','login');return false;">Se connecter</a></div>
   </div>
 </div>
@@ -259,6 +260,41 @@ function openModal(t){document.getElementById(t+'Modal').classList.add('open');}
 function closeModal(t){document.getElementById(t+'Modal').classList.remove('open');}
 function switchModal(a,b){closeModal(a);setTimeout(()=>openModal(b),100);}
 document.querySelectorAll('.modal-overlay').forEach(m=>{m.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});});
+
+async function submitWaitingList() {
+  const prenom = (document.getElementById('signup-prenom')?.value || '').trim();
+  const nom    = (document.getElementById('signup-nom')?.value    || '').trim();
+  const email  = (document.getElementById('signup-email')?.value  || '').trim();
+  const errEl  = document.getElementById('signup-error');
+  if (errEl) errEl.textContent = '';
+  if (!prenom || !nom || !email) {
+    if (errEl) errEl.textContent = 'Veuillez remplir tous les champs.';
+    return;
+  }
+  try {
+    const r = await fetch('https://www.martines.app/api/liste-attente', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prenom, nom, email, type_compte: 'independant' }),
+    });
+    const data = await r.json().catch(() => ({}));
+    if (r.ok) {
+      document.getElementById('signup-modal-inner').innerHTML = `
+        <div style="text-align:center;padding:24px 0">
+          <div style="font-size:2.5rem;margin-bottom:16px">🎉</div>
+          <div class="modal-logo">Martines</div>
+          <p style="margin-top:16px;font-size:1rem;color:var(--text);line-height:1.7;max-width:300px;margin-left:auto;margin-right:auto">
+            Merci&nbsp;! Vous êtes sur notre liste d'attente, nous vous contacterons très bientôt.
+          </p>
+          <button class="m-btn" style="margin-top:24px" onclick="closeModal('signup')">Fermer</button>
+        </div>`;
+    } else {
+      if (errEl) errEl.textContent = data.error || 'Une erreur est survenue, réessayez.';
+    }
+  } catch (e) {
+    if (errEl) errEl.textContent = 'Impossible de se connecter. Réessayez.';
+  }
+}
 </script>
 </body>
 </html>
