@@ -34,38 +34,103 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .btn-main { padding: 9px 22px; background: var(--bordeaux); color: white; border: none; border-radius: 6px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; transition: background 0.2s; font-weight: 500; }
 .btn-main:hover { background: var(--bordeaux-dark); }
 
-/* HERO SPLIT */
-.hero { min-height: 100vh; display: flex; padding-top: 66px; }
-.hero-left { flex: 1; background: #6B1F30; display: flex; align-items: center; padding: 60px 7%; }
-.hero-left-inner { max-width: 480px; }
-.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); font-size: 12px; font-weight: 500; padding: 6px 16px; border-radius: 20px; margin-bottom: 28px; letter-spacing: 0.04em; }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 3.5vw, 50px); font-weight: 500; line-height: 1.15; color: white; margin-bottom: 28px; }
-.hero h1 em { font-style: italic; color: rgba(255,255,255,0.75); }
-.hero-features { list-style: none; margin-bottom: 36px; display: flex; flex-direction: column; gap: 13px; }
-.hero-features li { display: flex; align-items: center; gap: 12px; font-size: 15px; color: rgba(255,255,255,0.85); font-weight: 300; }
-.hero-features li span.feat-icon { font-size: 18px; flex-shrink: 0; }
-.btn-hero-white { display: inline-block; padding: 14px 32px; background: white; color: #6B1F30; border: none; border-radius: 8px; font-size: 15px; font-family: 'DM Sans', sans-serif; font-weight: 600; cursor: pointer; text-decoration: none; transition: opacity 0.2s; margin-bottom: 16px; }
-.btn-hero-white:hover { opacity: 0.92; }
-.hero-note { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.8; }
-.hero-right { flex: 1; background: #FAF8F5; display: flex; align-items: center; justify-content: center; padding: 60px 6%; }
-.hero-cards { width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 14px; }
-.hcard { background: white; border-radius: 12px; padding: 18px 20px; border: 1px solid rgba(107,31,48,0.1); box-shadow: 0 2px 12px rgba(107,31,48,0.06); }
-.hcard-title { font-size: 10px; font-weight: 600; color: #A89E98; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
-.hcard-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid #F5F0EE; }
-.hcard-row:last-child { border-bottom: none; }
-.hcard-name { font-size: 13px; font-weight: 500; color: #2C2018; }
-.hcard-sub { font-size: 11px; color: #A89E98; margin-top: 1px; }
-.hcard-amount { font-size: 13px; font-weight: 600; color: #6B1F30; white-space: nowrap; }
-.hcard-ca { background: #6B1F30; border: none; text-align: center; padding: 20px; }
-.hcard-ca .hcard-title { color: rgba(255,255,255,0.55); margin-bottom: 6px; }
-.hcard-ca-value { font-size: 36px; font-weight: 700; color: white; letter-spacing: -1px; }
-.hcard-ca-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 3px; }
-.hcard-ech-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #F5F0EE; }
-.hcard-ech-row:last-child { border-bottom: none; }
-.hcard-ech-name { font-size: 13px; font-weight: 500; color: #2C2018; }
-.hcard-ech-sub { font-size: 11px; color: #A89E98; margin-top: 1px; }
-.hcard-ech-badge { font-size: 11px; font-weight: 600; color: #B5700A; background: #FFF3E0; padding: 2px 9px; border-radius: 10px; white-space: nowrap; }
-@media (max-width: 900px) { .hero { flex-direction: column; } .hero-left, .hero-right { padding: 60px 7%; } .hero-left-inner { max-width: 100%; } }
+.hero {
+  background: #6B1E35;
+  border-radius: 14px;
+  margin: 20px auto;
+  max-width: 1100px;
+  overflow: hidden;
+}
+.hero-top {
+  padding: 48px 40px 32px;
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-size: 36px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
+  max-width: 580px;
+}
+.hero-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.hero-cta {
+  background: #F5F0EC;
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.hero-cta-intro {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+}
+.btn-hero-primary {
+  display: inline-block;
+  background: #6B1E35;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  width: fit-content;
+}
+.hero-cta-note {
+  font-size: 12px;
+  color: #999;
+}
+.hero-features {
+  background: #fff;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+.hero-feat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.hero-feat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-feat-icon { font-size: 16px; }
+.hero-feat-text { font-size: 13px; color: #333; }
+.btn-hero-secondary {
+  display: inline-block;
+  background: transparent;
+  color: #6B1E35;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #6B1E35;
+  text-decoration: none;
+  width: fit-content;
+}
 
 /* APP MOCKUP */
 .app-mockup { background: white; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 24px 80px rgba(107,31,48,0.14), 0 4px 20px rgba(0,0,0,0.06); }
@@ -177,67 +242,29 @@ footer { background: #2C1018; padding: 36px 6%; }
 </nav>
 
 <section class="hero">
-
-  <!-- Colonne gauche bordeaux -->
-  <div class="hero-left">
-    <div class="hero-left-inner">
-      <div class="hero-badge">✦ Conçu par une assistante, pour les assistantes</div>
-      <h1>Gérez votre activité administrative <em>en toute sérénité</em></h1>
-      <ul class="hero-features">
-        <li><span class="feat-icon">📋</span> Suivi facturation mensuel automatisé</li>
-        <li><span class="feat-icon">⏱️</span> Chronomètre et temps par client</li>
-        <li><span class="feat-icon">📅</span> Agenda, tâches et échéances réunis</li>
-        <li><span class="feat-icon">🎯</span> Pipeline commercial et prospects</li>
-      </ul>
-      <a href="#" class="btn-hero-white" onclick="openModal('signup');return false;">Essayer gratuitement</a>
-      <div class="hero-note">✓ Sans engagement &nbsp;·&nbsp; ✓ Sans carte bancaire &nbsp;·&nbsp; ✓ Gratuit jusqu'à 3 clients</div>
+  <div class="hero-top">
+    <span class="hero-tag">Logiciel tout-en-1 pour assistantes indépendantes</span>
+    <h1>Pilotez chaque client<br>depuis une seule interface</h1>
+    <p class="hero-sub">Arrêtez de jongler entre vos outils. Martines centralise tout ce qu'il vous faut pour piloter chaque client — en un clin d'œil.</p>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-cta">
+      <p class="hero-cta-intro">Commencez gratuitement.<br>Aucune carte bancaire requise.</p>
+      <a href="#" onclick="openSignupForPlan('Découverte');return false;" class="btn-hero-primary">Essayer gratuitement — 0 €</a>
+      <p class="hero-cta-note">Gratuit jusqu'à 3 clients · Sans engagement</p>
+    </div>
+    <div class="hero-features">
+      <div class="hero-feat-grid">
+        <div class="hero-feat"><span class="hero-feat-icon">👥</span><span class="hero-feat-text">Base clients & fiches</span></div>
+        <div class="hero-feat"><span class="hero-feat-icon">🔑</span><span class="hero-feat-text">Suivi fournisseurs</span></div>
+        <div class="hero-feat"><span class="hero-feat-icon">📅</span><span class="hero-feat-text">Échéances & contrats</span></div>
+        <div class="hero-feat"><span class="hero-feat-icon">👤</span><span class="hero-feat-text">RH salariés</span></div>
+        <div class="hero-feat"><span class="hero-feat-icon">⏱</span><span class="hero-feat-text">Chronomètre</span></div>
+        <div class="hero-feat"><span class="hero-feat-icon">📊</span><span class="hero-feat-text">Rentabilité</span></div>
+      </div>
+      <a href="fonctionnalites.html" class="btn-hero-secondary">Voir toutes les fonctionnalités →</a>
     </div>
   </div>
-
-  <!-- Colonne droite crème -->
-  <div class="hero-right">
-    <div class="hero-cards">
-
-      <!-- Carte Ce mois -->
-      <div class="hcard">
-        <div class="hcard-title">📋 Ce mois — Mai 2026</div>
-        <div class="hcard-row">
-          <div><div class="hcard-name">Dupont Conseil</div><div class="hcard-sub">Mensuel récurrent</div></div>
-          <div class="hcard-amount">420 €</div>
-        </div>
-        <div class="hcard-row">
-          <div><div class="hcard-name">Studio Delta</div><div class="hcard-sub">4.5h × 45 €/h</div></div>
-          <div class="hcard-amount">200 €</div>
-        </div>
-        <div class="hcard-row">
-          <div><div class="hcard-name">Leroux Formation</div><div class="hcard-sub">Formation</div></div>
-          <div class="hcard-amount">1 000 €</div>
-        </div>
-      </div>
-
-      <!-- Carte CA total -->
-      <div class="hcard hcard-ca">
-        <div class="hcard-title">CA ce mois</div>
-        <div class="hcard-ca-value">1 620 €</div>
-        <div class="hcard-ca-label">3 clients · tout facturé ✓</div>
-      </div>
-
-      <!-- Carte Échéances -->
-      <div class="hcard">
-        <div class="hcard-title">⏰ Prochaines échéances</div>
-        <div class="hcard-ech-row">
-          <div><div class="hcard-ech-name">Contrat maintenance</div><div class="hcard-ech-sub">Dupont Conseil</div></div>
-          <span class="hcard-ech-badge">Dans 10j</span>
-        </div>
-        <div class="hcard-ech-row">
-          <div><div class="hcard-ech-name">Abonnement logiciel</div><div class="hcard-ech-sub">Studio Delta</div></div>
-          <span class="hcard-ech-badge">Dans 30j</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
 </section>
 
 <section class="why">
