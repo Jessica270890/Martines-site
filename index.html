@@ -42,7 +42,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
   overflow: hidden;
 }
 .hero-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   padding: 80px 60px 60px;
+  overflow: hidden;
+  min-height: 460px;
 }
 .hero-tag {
   display: inline-block;
@@ -134,69 +138,65 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 }
 .hero-right {
   position: relative;
-  height: 380px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 .hero-label-wrapper {
-  position: absolute;
-  top: 0;
-  right: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
-  z-index: 10;
+  align-self: flex-end;
+  margin-right: 20px;
 }
 .hero-label {
   font-family: 'Caveat', cursive;
-  font-size: 26px;
+  font-size: 24px;
   color: rgba(255,255,255,0.85);
-  white-space: nowrap;
+}
+.screenshots-wrapper {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
 }
 .hero-img-main {
   position: absolute;
-  top: 40px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 70%;
-  z-index: 3;
+  width: 65%;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  z-index: 3;
 }
-.hero-img-main img {
-  width: 100%;
-  display: block;
-  border-radius: 10px;
-}
+.hero-img-main img { width: 100%; display: block; }
 .hero-img-left {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 38%;
-  z-index: 4;
+  width: 36%;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  z-index: 4;
 }
-.hero-img-left img {
-  width: 100%;
-  display: block;
-  border-radius: 10px;
-}
+.hero-img-left img { width: 100%; display: block; }
 .hero-img-right {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 38%;
-  z-index: 4;
+  width: 36%;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  z-index: 4;
 }
-.hero-img-right img {
-  width: 100%;
-  display: block;
-  border-radius: 10px;
-}
+.hero-img-right img { width: 100%; display: block; }
 
 /* APP MOCKUP */
 .app-mockup { background: white; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 24px 80px rgba(107,31,48,0.14), 0 4px 20px rgba(0,0,0,0.06); }
@@ -309,9 +309,31 @@ footer { background: #2C1018; padding: 36px 6%; }
 
 <section class="hero">
   <div class="hero-top">
-    <span class="hero-tag">Logiciel tout-en-1 pour assistantes indépendantes</span>
-    <h1>Pilotez chaque client<br>depuis une seule interface</h1>
-    <p class="hero-sub">Arrêtez de jongler entre vos outils. Martines centralise tout ce qu'il vous faut pour piloter chaque client — en un clin d'œil.</p>
+    <div class="hero-left">
+      <span class="hero-tag">Logiciel tout-en-1 pour assistantes indépendantes</span>
+      <h1>Pilotez chaque client<br>depuis une seule interface</h1>
+      <p class="hero-sub">Arrêtez de jongler entre vos outils. Martines centralise tout ce qu'il vous faut pour piloter chaque client — en un clin d'œil.</p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-label-wrapper">
+        <span class="hero-label">Complet et sécurisé</span>
+        <svg viewBox="0 0 40 50" width="40" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 5 Q22 25 15 45" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M15 45 L8 38 M15 45 L22 40" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="screenshots-wrapper">
+        <div class="hero-img-main">
+          <img src="images/screenshot1.png" alt="Tableau de bord Martines">
+        </div>
+        <div class="hero-img-left">
+          <img src="images/screenshot4.png" alt="Suivi facturation Martines">
+        </div>
+        <div class="hero-img-right">
+          <img src="images/screenshot5.png" alt="Agenda Martines">
+        </div>
+      </div>
+    </div>
   </div>
   <div class="hero-bottom">
     <div class="hero-cta">
@@ -329,31 +351,6 @@ footer { background: #2C1018; padding: 36px 6%; }
         <div class="hero-feat"><span class="hero-feat-icon">📊</span><span class="hero-feat-text">Rentabilité</span></div>
       </div>
       <a href="fonctionnalites.html" class="btn-hero-secondary">Voir toutes les fonctionnalités →</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <!-- Label manuscrit avec flèche pointant vers le bas -->
-    <div class="hero-label-wrapper">
-      <span class="hero-label">Complet et sécurisé</span>
-      <svg viewBox="0 0 40 50" width="40" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 5 Q22 25 15 45" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <path d="M15 45 L8 38 M15 45 L22 40" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </div>
-
-    <!-- Image principale : tableau de bord (screenshot1) — au centre en grand -->
-    <div class="hero-img-main">
-      <img src="images/screenshot1.png" alt="Tableau de bord Martines">
-    </div>
-
-    <!-- Image gauche : suivi facturation (screenshot4) — en petit à gauche -->
-    <div class="hero-img-left">
-      <img src="images/screenshot4.png" alt="Suivi facturation Martines">
-    </div>
-
-    <!-- Image droite : agenda (screenshot5) — en petit à droite -->
-    <div class="hero-img-right">
-      <img src="images/screenshot5.png" alt="Agenda Martines">
     </div>
   </div>
 </section>
