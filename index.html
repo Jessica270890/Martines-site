@@ -132,6 +132,71 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
   text-decoration: none;
   width: fit-content;
 }
+.hero-right {
+  position: relative;
+  height: 380px;
+}
+.hero-label-wrapper {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+.hero-label {
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  color: rgba(255,255,255,0.85);
+  white-space: nowrap;
+}
+.hero-img-main {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  z-index: 3;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.hero-img-main img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+.hero-img-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 38%;
+  z-index: 4;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+}
+.hero-img-left img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+.hero-img-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 38%;
+  z-index: 4;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.35);
+}
+.hero-img-right img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
 
 /* APP MOCKUP */
 .app-mockup { background: white; border-radius: 14px; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 24px 80px rgba(107,31,48,0.14), 0 4px 20px rgba(0,0,0,0.06); }
@@ -264,6 +329,31 @@ footer { background: #2C1018; padding: 36px 6%; }
         <div class="hero-feat"><span class="hero-feat-icon">📊</span><span class="hero-feat-text">Rentabilité</span></div>
       </div>
       <a href="fonctionnalites.html" class="btn-hero-secondary">Voir toutes les fonctionnalités →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Label manuscrit avec flèche pointant vers le bas -->
+    <div class="hero-label-wrapper">
+      <span class="hero-label">Complet et sécurisé</span>
+      <svg viewBox="0 0 40 50" width="40" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 5 Q22 25 15 45" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M15 45 L8 38 M15 45 L22 40" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Image principale : tableau de bord (screenshot1) — au centre en grand -->
+    <div class="hero-img-main">
+      <img src="images/screenshot1.png" alt="Tableau de bord Martines">
+    </div>
+
+    <!-- Image gauche : suivi facturation (screenshot4) — en petit à gauche -->
+    <div class="hero-img-left">
+      <img src="images/screenshot4.png" alt="Suivi facturation Martines">
+    </div>
+
+    <!-- Image droite : agenda (screenshot5) — en petit à droite -->
+    <div class="hero-img-right">
+      <img src="images/screenshot5.png" alt="Agenda Martines">
     </div>
   </div>
 </section>
