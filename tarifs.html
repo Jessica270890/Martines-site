@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tarifs — Martines</title>
+<title>Tarifs — Josetine</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bordeaux:#6B1F30;--bordeaux-dark:#4a1520;--creme:#FAF8F5;--creme-dark:#F0EDE8;--text:#2C2018;--text-muted:#7A6E68;--text-light:#A89E98;--border:rgba(107,31,48,0.12);}
@@ -102,7 +102,7 @@ footer{background:#2C1018;padding:36px 6%;}
 </head>
 <body>
 <nav>
-  <a href="index.html" class="nav-logo">Martines<span>Gestion administrative</span></a>
+  <a href="index.html" class="nav-logo">Josetine<span>Gestion administrative</span></a>
   <div class="nav-links">
     <a href="fonctionnalites.html">Fonctionnalités</a>
     <a href="tarifs.html" class="active">Tarifs</a>
@@ -218,15 +218,15 @@ footer{background:#2C1018;padding:36px 6%;}
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Que se passe-t-il si je dépasse la limite de clients du plan Découverte ? <span>+</span></div>
-      <div class="faq-a">Martines vous préviendra lorsque vous approchez de la limite de 3 clients. Vous pourrez alors passer au plan Indépendant pour des clients illimités.</div>
+      <div class="faq-a">Josetine vous préviendra lorsque vous approchez de la limite de 3 clients. Vous pourrez alors passer au plan Indépendant pour des clients illimités.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Mes données sont-elles sécurisées ? <span>+</span></div>
-      <div class="faq-a">Oui. Martines est hébergé sur des serveurs sécurisés avec chiffrement des données sensibles. Vos données ne sont jamais partagées avec des tiers.</div>
+      <div class="faq-a">Oui. Josetine est hébergé sur des serveurs sécurisés avec chiffrement des données sensibles. Vos données ne sont jamais partagées avec des tiers.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(this)">Le plan Entreprise est-il adapté aux cabinets ? <span>+</span></div>
-      <div class="faq-a">Oui, le plan Entreprise est pensé pour les structures avec plusieurs collaboratrices. Il inclut un onboarding dédié et un accompagnement mensuel pour que toute l'équipe prenne Martines en main rapidement.</div>
+      <div class="faq-a">Oui, le plan Entreprise est pensé pour les structures avec plusieurs collaboratrices. Il inclut un onboarding dédié et un accompagnement mensuel pour que toute l'équipe prenne Josetine en main rapidement.</div>
     </div>
   </div>
 </section>
@@ -242,21 +242,21 @@ footer{background:#2C1018;padding:36px 6%;}
 
 <footer>
   <div class="footer-inner">
-    <a href="index.html" class="footer-logo">Martines<span>Gestion administrative</span></a>
+    <a href="index.html" class="footer-logo">Josetine<span>Gestion administrative</span></a>
     <div class="footer-links">
       <a href="fonctionnalites.html">Fonctionnalités</a>
       <a href="tarifs.html">Tarifs</a>
       <a href="index.html#contact">Contact</a>
       <a href="#">CGU</a>
     </div>
-    <div class="footer-copy">© 2026 Martines · Fait avec passion</div>
+    <div class="footer-copy">© 2026 Josetine · Fait avec passion</div>
   </div>
 </footer>
 
 <div class="modal-overlay" id="loginModal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('login')">×</button>
-    <div class="modal-logo">Martines</div>
+    <div class="modal-logo">Josetine</div>
     <div class="modal-sub">Connectez-vous à votre espace</div>
     <div class="m-form-group"><label class="m-label">Email</label><input type="email" class="m-input" placeholder="votre@email.fr"></div>
     <div class="m-form-group"><label class="m-label">Mot de passe</label><input type="password" class="m-input" placeholder="••••••••"></div>
@@ -267,7 +267,7 @@ footer{background:#2C1018;padding:36px 6%;}
 <div class="modal-overlay" id="signupModal">
   <div class="modal" id="signup-modal-inner">
     <button class="modal-close" onclick="closeModal('signup')">×</button>
-    <div class="modal-logo">Martines</div>
+    <div class="modal-logo">Josetine</div>
     <div class="modal-sub">Rejoignez la liste d'attente</div>
     <div id="signup-plan-badge" style="display:inline-block;background:rgba(107,31,48,0.08);color:#6B1F30;font-size:12px;font-weight:600;padding:4px 14px;border-radius:20px;margin-bottom:16px;"></div>
     <div class="m-form-group"><label class="m-label">Prénom</label><input type="text" id="signup-prenom" class="m-input" placeholder="Marie"></div>
@@ -351,7 +351,7 @@ async function submitWaitingListWithPlan() {
       document.getElementById('signup-modal-inner').innerHTML = `
         <div style="text-align:center;padding:24px 0">
           <div style="font-size:2.5rem;margin-bottom:16px">🎉</div>
-          <div class="modal-logo">Martines</div>
+          <div class="modal-logo">Josetine</div>
           <p style="margin-top:16px;font-size:1rem;color:var(--text);line-height:1.7;max-width:300px;margin-left:auto;margin-right:auto">
             Merci&nbsp;! Vous êtes sur notre liste d'attente pour le plan
             <strong>${_selectedPlan}</strong>,
