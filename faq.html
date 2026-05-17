@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Josetine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bordeaux:#6B1F30;--bordeaux-dark:#4a1520;--creme:#FAF8F5;--creme-dark:#F0EDE8;--text:#2C2018;--text-muted:#7A6E68;--text-light:#A89E98;--border:rgba(107,31,48,0.12);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--creme);color:var(--text);overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,248,245,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 6%;height:66px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--bordeaux);text-decoration:none;}
+.nav-logo span{font-size:10px;font-family:'DM Sans',sans-serif;font-weight:300;color:var(--text-muted);display:block;letter-spacing:0.18em;text-transform:uppercase;margin-top:-3px;}
+.nav-links{display:flex;align-items:center;gap:36px;}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--bordeaux);}
+.nav-cta{display:flex;gap:10px;}
+.btn-ghost{padding:9px 22px;border:1px solid var(--border);border-radius:6px;font-size:14px;color:var(--text);background:none;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all 0.2s;}
+.btn-ghost:hover{border-color:var(--bordeaux);color:var(--bordeaux);}
+.btn-main{padding:9px 22px;background:var(--bordeaux);color:white;border:none;border-radius:6px;font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;font-weight:500;}
+.btn-main:hover{background:var(--bordeaux-dark);}
+
+.page-hero{padding:120px 6% 60px;background:var(--bordeaux);text-align:center;}
+.page-hero-label{display:inline-block;font-size:11px;font-weight:500;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,50px);font-weight:500;color:white;margin-bottom:16px;line-height:1.2;}
+.page-hero p{font-size:16px;color:rgba(255,255,255,0.6);font-weight:300;max-width:520px;margin:0 auto;}
+.page-hero p a{color:rgba(255,255,255,0.85);text-decoration:underline;text-underline-offset:3px;}
+
+.faq-sections{padding:60px 6%;background:white;}
+.faq-sections-inner{max-width:720px;margin:0 auto;}
+
+.faq-group{margin-bottom:0;}
+.faq-group-title{font-size:11px;font-weight:600;color:var(--bordeaux);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:16px;padding-top:48px;}
+.faq-group:first-child .faq-group-title{padding-top:0;}
+
+.faq-sep{height:32px;background:#F9F5F3;margin:0 -6%;}
+
+.faq-item{border:1px solid rgba(107,31,48,0.12);border-radius:8px;margin-bottom:8px;background:white;overflow:hidden;}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;cursor:pointer;gap:16px;user-select:none;}
+.faq-q-text{font-size:15px;font-weight:500;color:var(--text);line-height:1.4;}
+.faq-chevron{font-size:12px;color:var(--bordeaux);transition:transform 0.3s ease;flex-shrink:0;}
+.faq-item.open .faq-chevron{transform:rotate(180deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+.faq-item.open .faq-a{max-height:400px;}
+.faq-a-inner{padding:0 20px 20px;font-size:15px;color:var(--text-muted);line-height:1.8;font-weight:300;}
+
+.cta-band{background:var(--bordeaux-dark);padding:60px 6%;text-align:center;}
+.cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(24px,2.5vw,36px);font-weight:500;color:white;margin-bottom:12px;}
+.cta-band p{font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:28px;font-weight:300;}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-white{padding:13px 28px;background:white;color:var(--bordeaux);border:none;border-radius:8px;font-size:15px;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;font-weight:500;display:inline-block;}
+.btn-cta-white:hover{opacity:0.9;}
+.btn-cta-outline{padding:13px 28px;border:1.5px solid rgba(255,255,255,0.4);color:white;border-radius:8px;font-size:15px;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;background:none;display:inline-block;}
+.btn-cta-outline:hover{background:rgba(255,255,255,0.1);}
+
+footer{background:#2C1018;padding:36px 6%;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:20px;color:rgba(255,255,255,0.85);text-decoration:none;}
+.footer-logo span{font-size:10px;font-family:'DM Sans',sans-serif;color:rgba(255,255,255,0.3);display:block;letter-spacing:0.12em;text-transform:uppercase;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:white;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.25);}
+
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:200;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;border-radius:16px;padding:40px;width:100%;max-width:420px;margin:16px;position:relative;}
+.modal-logo{font-family:'Playfair Display',serif;font-size:26px;color:var(--bordeaux);margin-bottom:4px;}
+.modal-sub{font-size:13px;color:var(--text-muted);margin-bottom:28px;}
+.m-form-group{margin-bottom:16px;}
+.m-label{font-size:11px;font-weight:500;color:var(--text);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;}
+.m-input{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--creme);outline:none;transition:border-color 0.2s;}
+.m-input:focus{border-color:var(--bordeaux);}
+.m-btn{width:100%;padding:13px;background:var(--bordeaux);color:white;border:none;border-radius:8px;font-size:15px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;margin-top:8px;}
+.m-btn:hover{background:var(--bordeaux-dark);}
+.modal-footer-note{text-align:center;margin-top:18px;font-size:13px;color:var(--text-muted);}
+.modal-footer-note a{color:var(--bordeaux);text-decoration:none;font-weight:500;}
+.modal-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:24px;color:var(--text-muted);cursor:pointer;}
+.signup-type-opt.selected{border-color:var(--bordeaux)!important;background:rgba(107,31,48,0.06);color:var(--bordeaux)!important;font-weight:500;}
+
+@media(max-width:900px){.nav-links{display:none;}}
+@media(max-width:600px){.cta-btns{flex-direction:column;align-items:center;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Josetine<span>Gestion administrative</span></a>
+  <div class="nav-links">
+    <a href="fonctionnalites.html">Fonctionnalités</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="faq.html" class="active">FAQ</a>
+  </div>
+  <div class="nav-cta">
+    <a href="#" class="btn-ghost" onclick="openModal('login');return false;">Se connecter</a>
+    <a href="#" class="btn-main" onclick="openModal('signup');return false;">Essai gratuit</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <span class="page-hero-label">FAQ</span>
+  <h1>Toutes vos questions,<br>une bonne fois pour toutes</h1>
+  <p>Vous ne trouvez pas la réponse ? Écrivez-nous à <a href="mailto:contact@josetine.com">contact@josetine.com</a></p>
+</div>
+
+<section class="faq-sections">
+  <div class="faq-sections-inner">
+
+    <div class="faq-group">
+      <div class="faq-group-title">Plans &amp; Tarifs</div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Quelle est la différence entre les plans ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Le plan Découverte est gratuit et limité à 3 clients. Le plan Indépendant (19&nbsp;€ HT/mois) monte à 10 clients et 2 utilisateurs avec toutes les fonctionnalités. Le plan Studio (39&nbsp;€ HT/mois) est illimité avec support prioritaire. Le plan Entreprise (69&nbsp;€ HT/mois) ajoute un onboarding dédié, un accompagnement mensuel et un SLA garanti.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Puis-je changer de plan à tout moment ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Oui, vous pouvez passer à un plan supérieur ou inférieur à tout moment depuis vos Paramètres. Le changement prend effet immédiatement.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Y a-t-il un engagement minimum ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Non, aucun engagement. Résiliation à tout moment depuis vos Paramètres, sans frais.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Les prix sont-ils HT ou TTC ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Tous les prix sont indiqués hors taxes (HT) et soumis à la TVA.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Que se passe-t-il si je dépasse la limite de clients de mon plan ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Josetine vous préviendra quand vous approchez de la limite. Vous pourrez alors passer au plan supérieur en un clic.</div></div>
+      </div>
+    </div>
+
+    <div class="faq-sep"></div>
+
+    <div class="faq-group">
+      <div class="faq-group-title">Sécurité &amp; Données</div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Mes données sont-elles en sécurité ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Oui. Josetine repose sur une architecture multi-tenant avec chiffrement AES-256 des données sensibles, hachage BCrypt des mots de passe, et hébergement sur des serveurs Railway localisés en Europe. Il est techniquement impossible pour un autre utilisateur d'accéder à vos données.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Qui peut voir mes données ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Personne. Vos données ne sont jamais vendues, partagées ou exploitées à des fins commerciales. Seule vous y avez accès.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Que deviennent mes données si je résilie ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Vous avez 30 jours pour exporter vos données après résiliation. Passé ce délai, elles sont supprimées définitivement conformément au RGPD. Un email de confirmation vous est envoyé.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Josetine est-il conforme au RGPD ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Oui. Josetine est édité par une société française (SASU Josetine, Couzeix — 87), hébergé en Europe, et respecte l'ensemble des obligations du RGPD. Vous pouvez exercer vos droits à tout moment en écrivant à <a href="mailto:contact@josetine.com" style="color:var(--bordeaux);">contact@josetine.com</a>.</div></div>
+      </div>
+    </div>
+
+    <div class="faq-sep"></div>
+
+    <div class="faq-group">
+      <div class="faq-group-title">Prise en main</div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Comment démarrer ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Créez votre compte gratuitement en moins de 2 minutes, sans carte bancaire. Vous pouvez importer vos clients et fournisseurs depuis un fichier Excel dès le premier jour.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Faut-il être à l'aise avec la technologie ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Non. Josetine a été conçu pour être intuitif et pris en main immédiatement, même sans formation technique. Si vous avez une question, l'onglet Suggestions dans l'application vous permet de nous contacter directement.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Peut-on utiliser Josetine sur mobile ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Oui. Josetine est une Progressive Web App (PWA) installable sur votre téléphone depuis votre navigateur, avec une interface adaptée mobile.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Peut-on importer ses données existantes ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Oui, Josetine propose des imports Excel pour les clients, fournisseurs et prospects, avec un modèle téléchargeable pour faciliter la migration.</div></div>
+      </div>
+    </div>
+
+    <div class="faq-sep"></div>
+
+    <div class="faq-group">
+      <div class="faq-group-title">Plan Entreprise</div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Le plan Entreprise est-il adapté aux assistantes salariées ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Oui, il est spécifiquement conçu pour les assistantes en entreprise. Il inclut une gestion par entités, un module RH complet, un module contentieux, et un accompagnement mensuel dédié.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Quelle est la différence entre le plan Studio et le plan Entreprise ?</span>
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Le plan Studio est illimité en clients et utilisateurs. Le plan Entreprise ajoute un onboarding dédié, un accompagnement mensuel personnalisé, une formation équipe incluse et un SLA garanti.</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-band">
+  <h2>Vous ne trouvez pas votre réponse ?</h2>
+  <p>Notre équipe répond sous 24h.</p>
+  <div class="cta-btns">
+    <a href="mailto:contact@josetine.com" class="btn-cta-white">Écrire à contact@josetine.com</a>
+    <a href="#" class="btn-cta-outline" onclick="openModal('signup');return false;">Essayer gratuitement</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Josetine<span>Gestion administrative</span></a>
+    <div class="footer-links">
+      <a href="fonctionnalites.html">Fonctionnalités</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="faq.html">FAQ</a>
+      <a href="#">CGU</a>
+    </div>
+    <div class="footer-copy">© 2026 Josetine · Fait avec passion</div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('login')">×</button>
+    <div class="modal-logo">Josetine</div>
+    <div class="modal-sub">Connectez-vous à votre espace</div>
+    <div class="m-form-group"><label class="m-label">Email</label><input type="email" class="m-input" placeholder="votre@email.fr"></div>
+    <div class="m-form-group"><label class="m-label">Mot de passe</label><input type="password" class="m-input" placeholder="••••••••"></div>
+    <button class="m-btn" onclick="window.location.href='https://app.martines.app'">Se connecter</button>
+    <div class="modal-footer-note">Pas encore de compte ? <a href="#" onclick="switchModal('login','signup');return false;">Créer un compte</a></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="signupModal">
+  <div class="modal" id="signup-modal-inner">
+    <button class="modal-close" onclick="closeModal('signup')">×</button>
+    <div class="modal-logo">Josetine</div>
+    <div class="modal-sub">Rejoignez la liste d'attente</div>
+    <div class="m-form-group"><label class="m-label">Prénom</label><input type="text" id="signup-prenom" class="m-input" placeholder="Marie"></div>
+    <div class="m-form-group"><label class="m-label">Nom</label><input type="text" id="signup-nom" class="m-input" placeholder="Martin"></div>
+    <div class="m-form-group"><label class="m-label">Email</label><input type="email" id="signup-email" class="m-input" placeholder="marie@email.fr"></div>
+    <div class="m-form-group">
+      <label class="m-label">Vous êtes *</label>
+      <div id="signup-type-group" style="display:flex;gap:8px;margin-top:4px">
+        <div class="signup-type-opt" data-val="independant" onclick="selectSignupType(this)"
+             style="flex:1;padding:10px 6px;border:1.5px solid rgba(107,31,48,0.15);border-radius:8px;text-align:center;cursor:pointer;font-size:12px;color:#7A6E68;transition:all 0.15s;line-height:1.5">
+          👤 Assistante<br>indépendante
+        </div>
+        <div class="signup-type-opt" data-val="enterprise" onclick="selectSignupType(this)"
+             style="flex:1;padding:10px 6px;border:1.5px solid rgba(107,31,48,0.15);border-radius:8px;text-align:center;cursor:pointer;font-size:12px;color:#7A6E68;transition:all 0.15s;line-height:1.5">
+          🏢 Assistante<br>en entreprise
+        </div>
+      </div>
+    </div>
+    <div id="signup-error" style="font-size:13px;color:#c0392b;margin-bottom:8px;min-height:18px"></div>
+    <button class="m-btn" onclick="submitWaitingList()">Rejoindre la liste d'attente</button>
+    <div class="modal-footer-note">Déjà un compte ? <a href="#" onclick="switchModal('signup','login');return false;">Se connecter</a></div>
+  </div>
+</div>
+
+<script>
+let _selectedType = '';
+function openModal(t){document.getElementById(t+'Modal').classList.add('open');}
+function closeModal(t){document.getElementById(t+'Modal').classList.remove('open');}
+function switchModal(a,b){closeModal(a);setTimeout(()=>openModal(b),100);}
+function selectSignupType(el){
+  _selectedType=el.dataset.val;
+  document.querySelectorAll('.signup-type-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+document.querySelectorAll('.modal-overlay').forEach(m=>{m.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});});
+
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+async function submitWaitingList(){
+  const prenom=(document.getElementById('signup-prenom')?.value||'').trim();
+  const nom=(document.getElementById('signup-nom')?.value||'').trim();
+  const email=(document.getElementById('signup-email')?.value||'').trim();
+  const errEl=document.getElementById('signup-error');
+  if(errEl)errEl.textContent='';
+  if(!prenom||!nom||!email||!_selectedType){
+    if(errEl)errEl.textContent=!_selectedType?'Veuillez indiquer votre profil.':'Veuillez remplir tous les champs.';
+    return;
+  }
+  try{
+    const r=await fetch('https://www.martines.app/api/liste-attente',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({prenom,nom,email,type_compte:_selectedType}),
+    });
+    const data=await r.json().catch(()=>({}));
+    if(r.ok){
+      document.getElementById('signup-modal-inner').innerHTML=`
+        <div style="text-align:center;padding:24px 0">
+          <div style="font-size:2.5rem;margin-bottom:16px">🎉</div>
+          <div class="modal-logo">Josetine</div>
+          <p style="margin-top:16px;font-size:1rem;color:var(--text);line-height:1.7;max-width:300px;margin-left:auto;margin-right:auto">
+            Merci&nbsp;! Vous êtes sur notre liste d'attente, nous vous contacterons très bientôt.
+          </p>
+          <button class="m-btn" style="margin-top:24px" onclick="closeModal('signup')">Fermer</button>
+        </div>`;
+    }else{
+      if(errEl)errEl.textContent=data.error||'Une erreur est survenue, réessayez.';
+    }
+  }catch(e){
+    if(errEl)errEl.textContent='Impossible de se connecter. Réessayez.';
+  }
+}
+</script>
+</body>
+</html>
