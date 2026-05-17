@@ -236,6 +236,13 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .row-badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
 .row-amount { font-size: 12px; font-weight: 500; color: var(--bordeaux); white-space: nowrap; }
 
+/* TRUST BAR */
+.trust-bar { background: #F9F5F3; display: grid; grid-template-columns: repeat(4,1fr); padding: 16px 60px; border-bottom: 1px solid rgba(107,31,48,0.1); }
+.trust-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
+.trust-icon { font-size: 22px; flex-shrink: 0; }
+.trust-label { font-size: 14px; font-weight: 500; color: #2C2018; }
+.trust-sub { font-size: 12px; color: #7A6E68; margin-top: 2px; }
+
 /* WHY */
 .why { background: var(--bordeaux); padding: 80px 6%; }
 .why-inner { max-width: 1200px; margin: 0 auto; }
@@ -353,6 +360,37 @@ footer { background: #2C1018; padding: 36px 6%; }
     </div>
   </div>
 </section>
+
+<div class="trust-bar">
+  <div class="trust-item">
+    <span class="trust-icon">🔒</span>
+    <div>
+      <div class="trust-label">Données sécurisées</div>
+      <div class="trust-sub">Chiffrement AES-256</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">📍</span>
+    <div>
+      <div class="trust-label">Hébergé en Europe</div>
+      <div class="trust-sub">Serveurs Railway EU</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">💳</span>
+    <div>
+      <div class="trust-label">Sans carte bancaire</div>
+      <div class="trust-sub">Démarrez gratuitement</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">↩</span>
+    <div>
+      <div class="trust-label">Sans engagement</div>
+      <div class="trust-sub">Résiliation à tout moment</div>
+    </div>
+  </div>
+</div>
 
 <section class="why">
   <div class="why-inner">
