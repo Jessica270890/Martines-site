@@ -312,6 +312,21 @@ footer { background: #2C1018; padding: 36px 6%; }
 .modal-close { position: absolute; top: 14px; right: 18px; background: none; border: none; font-size: 24px; color: var(--text-muted); cursor: pointer; line-height: 1; }
 .signup-type-opt.selected { border-color: var(--bordeaux) !important; background: rgba(107,31,48,0.06); color: var(--bordeaux) !important; font-weight: 500; }
 
+/* HERO MODE SWITCHER */
+.hero { transition: background-color 0.4s ease; }
+.hero-top, .hero-bottom { transition: opacity 0.3s ease; }
+.hero-switcher-wrap { display: flex; justify-content: center; padding: 32px 0 0; }
+.hero-switcher { display: inline-flex; background: rgba(255,255,255,0.12); border-radius: 30px; padding: 4px; gap: 0; }
+.switcher-btn { padding: 8px 22px; border-radius: 26px; border: none; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.25s; font-family: 'DM Sans', sans-serif; background: transparent; color: rgba(255,255,255,0.7); }
+.switcher-btn.active { background: white; color: #6B1E35; }
+/* Enterprise mode overrides */
+.hero.mode-entreprise h1 em { color: #7EC8E3; }
+.hero.mode-entreprise .hero-cta { background: #EEF3FC; }
+.hero.mode-entreprise .btn-hero-primary { background: #1A3A5C; }
+.hero.mode-entreprise .hero-features { background: #dce9f8; }
+.hero.mode-entreprise .btn-hero-secondary { color: #1A3A5C; border-color: #1A3A5C; }
+.hero.mode-entreprise .switcher-btn.active { color: #1A3A5C; }
+
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 40px; }
   .why-grid { grid-template-columns: 1fr; }
@@ -332,14 +347,20 @@ footer { background: #2C1018; padding: 36px 6%; }
   </div>
   <div class="nav-cta">
     <a href="#" class="btn-ghost" onclick="openModal('login');return false;">Se connecter</a>
-    <a href="#" class="btn-main" onclick="openModal('signup');return false;">Essai gratuit</a>
+    <a href="#" class="btn-main" id="nav-cta-main" onclick="openModal('signup');return false;">Essai gratuit</a>
   </div>
 </nav>
 
-<section class="hero">
+<section class="hero" id="hero-section">
+  <div class="hero-switcher-wrap">
+    <div class="hero-switcher">
+      <button class="switcher-btn active" data-mode="independant" onclick="setHeroMode('independant')">Assistante indépendante</button>
+      <button class="switcher-btn" data-mode="entreprise" onclick="setHeroMode('entreprise')">Assistante en entreprise</button>
+    </div>
+  </div>
   <div class="hero-top">
     <div class="hero-left">
-      <h1>Le logiciel <em>Tout en 1</em><br>pour les assistantes<br>indépendantes qui permet<br>de <em>piloter vos clients</em></h1>
+      <h1 id="hero-h1">Le logiciel <em>Tout en 1</em><br>pour les assistantes<br>indépendantes qui permet<br>de <em>piloter vos clients</em></h1>
       <p class="hero-sub">Arrêtez de jongler entre vos outils. Josetine centralise tout ce qu'il vous faut pour piloter chaque client — en un clin d'œil.</p>
       <div class="hero-positioning">
         <span class="hero-positioning-icon">⚡</span>
@@ -359,13 +380,13 @@ footer { background: #2C1018; padding: 36px 6%; }
       </div>
       <div class="screenshots-wrapper">
         <div class="hero-img-main">
-          <img src="images/screenshot1.png" alt="Tableau de bord Josetine">
+          <img id="img-main" src="images/screenshot1.png" alt="Tableau de bord Josetine">
         </div>
         <div class="hero-img-left">
-          <img src="images/screenshot4.png" alt="Suivi facturation Josetine">
+          <img id="img-left" src="images/screenshot4.png" alt="Suivi facturation Josetine">
         </div>
         <div class="hero-img-right">
-          <img src="images/screenshot5.png" alt="Agenda Josetine">
+          <img id="img-right" src="images/screenshot5.png" alt="Agenda Josetine">
         </div>
       </div>
     </div>
@@ -373,7 +394,7 @@ footer { background: #2C1018; padding: 36px 6%; }
   <div class="hero-bottom">
     <div class="hero-cta">
       <p class="hero-cta-intro">Commencez gratuitement.<br>Aucune carte bancaire requise.</p>
-      <a href="#" onclick="openSignupForPlan('Découverte');return false;" class="btn-hero-primary">Essayer gratuitement — 0 €</a>
+      <a href="#" id="hero-cta-btn" onclick="openSignupForPlan('Découverte');return false;" class="btn-hero-primary">Essayer gratuitement — 0 €</a>
       <p class="hero-cta-note">Gratuit jusqu'à 3 clients · Sans engagement</p>
     </div>
     <div class="hero-features">
@@ -390,7 +411,7 @@ footer { background: #2C1018; padding: 36px 6%; }
   </div>
 </section>
 
-<div class="trust-bar">
+<div class="trust-bar" id="trust-bar">
   <div class="trust-item">
     <span class="trust-icon">🔒</span>
     <div>
@@ -549,6 +570,143 @@ function selectSignupType(el) {
   el.classList.add('selected');
 }
 document.querySelectorAll('.modal-overlay').forEach(m=>{m.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});});
+
+/* ---- HERO MODE SWITCHER ---- */
+const MODES = {
+  independant: {
+    heroBg: '#6B1E35',
+    h1: 'Le logiciel <em>Tout en 1</em><br>pour les assistantes<br>indépendantes qui permet<br>de <em>piloter vos clients</em>',
+    sub: "Arrêtez de jongler entre vos outils. Josetine centralise tout ce qu'il vous faut pour piloter chaque client — en un clin d'œil.",
+    posTitle: "Josetine n'est pas un logiciel de facturation.",
+    posText: 'Vous avez déjà Abby, Axonaut ou Pennylane pour ça.',
+    ctaIntro: 'Commencez gratuitement.<br>Aucune carte bancaire requise.',
+    ctaBtnText: 'Essayer gratuitement — 0 €',
+    ctaBtnHref: '#',
+    ctaBtnOnclick: "openSignupForPlan('Découverte');return false;",
+    ctaNote: 'Gratuit jusqu\'à 3 clients · Sans engagement',
+    imgMain: { src: 'images/screenshot1.png', alt: 'Tableau de bord Josetine' },
+    imgLeft: { src: 'images/screenshot4.png', alt: 'Suivi facturation Josetine' },
+    imgRight: { src: 'images/screenshot5.png', alt: 'Agenda Josetine' },
+    feats: [
+      { icon: '👥', text: 'Base clients & fiches' }, { icon: '🔑', text: 'Suivi fournisseurs' },
+      { icon: '📅', text: 'Échéances & contrats' }, { icon: '👤', text: 'RH salariés' },
+      { icon: '⏱', text: 'Chronomètre' }, { icon: '📊', text: 'Rentabilité' },
+    ],
+    featBtn: { href: 'fonctionnalites.html', text: 'Voir toutes les fonctionnalités →' },
+    trust: [
+      { icon: '🔒', label: 'Données sécurisées', sub: 'Chiffrement AES-256' },
+      { icon: '📍', label: 'Hébergé en Europe', sub: 'Serveurs Railway EU' },
+      { icon: '💳', label: 'Sans carte bancaire', sub: 'Démarrez gratuitement' },
+      { icon: '↩', label: 'Sans engagement', sub: 'Résiliation à tout moment' },
+    ],
+    trustBg: '#F9F5F3',
+    navBtnText: 'Essai gratuit', navBtnBg: '#6B1E35',
+    modeClass: '',
+  },
+  entreprise: {
+    heroBg: '#1A3A5C',
+    h1: "L'outil de pilotage pensé pour <em>l'assistante en entreprise</em>",
+    sub: "Gérez vos entités, vos fournisseurs, vos équipes et vos contentieux — depuis une seule interface, conçue pour votre réalité.",
+    posTitle: 'Une interface entièrement dédiée.',
+    posText: "Pas un outil généraliste adapté — un outil pensé pour vous dès le départ.",
+    ctaIntro: 'Découvrez le plan Entreprise.<br>25&nbsp;€ HT/mois, sans engagement.',
+    ctaBtnText: 'Demander une démo',
+    ctaBtnHref: 'mailto:contact@josetine.com',
+    ctaBtnOnclick: '',
+    ctaNote: '25€ HT/mois · Sans engagement · Facture mensuelle',
+    imgMain: { src: 'images/screenshot1.png', alt: 'Interface Josetine Entreprise' },
+    imgLeft: { src: 'images/screenshot7.png', alt: 'Fournisseurs Josetine Entreprise' },
+    imgRight: { src: 'images/screenshot8.png', alt: 'RH Josetine Entreprise' },
+    feats: [
+      { icon: '🏢', text: 'Gestion par entités' }, { icon: '👥', text: 'RH complet' },
+      { icon: '⚖️', text: 'Contentieux & litiges' }, { icon: '📋', text: 'Documentation interne' },
+      { icon: '📅', text: 'Agenda & échéances' }, { icon: '🔑', text: 'Fournisseurs internes' },
+    ],
+    featBtn: { href: 'tarifs.html', text: 'Voir le plan Entreprise →' },
+    trust: [
+      { icon: '🏢', label: 'Gestion par entités', sub: 'Multi-structures' },
+      { icon: '👥', label: 'RH complet', sub: 'Employés & absences' },
+      { icon: '⚖️', label: 'Contentieux', sub: 'Litiges & suivi' },
+      { icon: '🔒', label: 'Données sécurisées', sub: 'AES-256 · Europe' },
+    ],
+    trustBg: '#EEF3FC',
+    navBtnText: 'Demander une démo', navBtnBg: '#1A3A5C',
+    modeClass: 'mode-entreprise',
+  },
+};
+
+function setHeroMode(mode) {
+  const m = MODES[mode];
+  const hero = document.getElementById('hero-section');
+  const trustBar = document.getElementById('trust-bar');
+  const heroTop = document.querySelector('.hero-top');
+  const heroBottom = document.querySelector('.hero-bottom');
+
+  // Fade out content
+  [heroTop, heroBottom, trustBar].forEach(el => { if (el) el.style.opacity = '0'; });
+
+  // Change hero background immediately (CSS transition handles animation)
+  hero.style.background = m.heroBg;
+  hero.className = 'hero' + (m.modeClass ? ' ' + m.modeClass : '');
+
+  setTimeout(() => {
+    // h1
+    document.getElementById('hero-h1').innerHTML = m.h1;
+    // sub
+    document.querySelector('.hero-sub').textContent = m.sub;
+    // positioning note
+    document.querySelector('.hero-positioning-title').textContent = m.posTitle;
+    document.querySelector('.hero-positioning-text').textContent = m.posText;
+    // screenshots
+    const imgM = document.getElementById('img-main');
+    imgM.src = m.imgMain.src; imgM.alt = m.imgMain.alt;
+    const imgL = document.getElementById('img-left');
+    imgL.src = m.imgLeft.src; imgL.alt = m.imgLeft.alt;
+    const imgR = document.getElementById('img-right');
+    imgR.src = m.imgRight.src; imgR.alt = m.imgRight.alt;
+    // CTA
+    document.querySelector('.hero-cta-intro').innerHTML = m.ctaIntro;
+    const ctaBtn = document.getElementById('hero-cta-btn');
+    ctaBtn.textContent = m.ctaBtnText;
+    ctaBtn.href = m.ctaBtnHref;
+    if (m.ctaBtnOnclick) ctaBtn.setAttribute('onclick', m.ctaBtnOnclick);
+    else ctaBtn.removeAttribute('onclick');
+    document.querySelector('.hero-cta-note').textContent = m.ctaNote;
+    // feature grid
+    document.querySelector('.hero-feat-grid').innerHTML = m.feats.map(f =>
+      `<div class="hero-feat"><span class="hero-feat-icon">${f.icon}</span><span class="hero-feat-text">${f.text}</span></div>`
+    ).join('');
+    const featBtn = document.querySelector('.btn-hero-secondary');
+    featBtn.href = m.featBtn.href; featBtn.textContent = m.featBtn.text;
+    // trust bar
+    trustBar.style.background = m.trustBg;
+    const items = trustBar.querySelectorAll('.trust-item');
+    m.trust.forEach((t, i) => {
+      if (!items[i]) return;
+      items[i].querySelector('.trust-icon').textContent = t.icon;
+      items[i].querySelector('.trust-label').textContent = t.label;
+      items[i].querySelector('.trust-sub').textContent = t.sub;
+    });
+    // nav button
+    const navBtn = document.getElementById('nav-cta-main');
+    navBtn.textContent = m.navBtnText;
+    navBtn.style.background = m.navBtnBg;
+    // switcher buttons
+    document.querySelectorAll('.switcher-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === mode);
+    });
+    // save
+    localStorage.setItem('josetineMode', mode);
+    // fade in
+    [heroTop, heroBottom, trustBar].forEach(el => { if (el) el.style.opacity = '1'; });
+  }, 200);
+}
+
+// Restore saved mode on load
+(function() {
+  const saved = localStorage.getItem('josetineMode');
+  if (saved && saved !== 'independant') setHeroMode(saved);
+})();
 
 async function submitWaitingList() {
   const prenom = (document.getElementById('signup-prenom')?.value || '').trim();
