@@ -152,8 +152,8 @@ footer{background:#2C1018;padding:36px 6%;}
         <div class="plan-badge">Le plus populaire</div>
         <div class="plan-name">Indépendant</div>
         <div class="plan-tagline">Pour les freelances et indépendantes</div>
-        <div class="plan-price" id="p-ind">19 €<sub> / mois</sub></div>
-        <div class="plan-period" id="per-ind">Facturé 228 €/an</div>
+        <div class="plan-price" id="p-ind">19 € HT<sub> / mois</sub></div>
+        <div class="plan-period" id="per-ind">Facturé 228 € HT/an</div>
         <hr class="plan-divider">
         <div class="plan-section-label">Tout Découverte, plus :</div>
         <div class="plan-feature"><span class="check">✓</span>2 utilisateurs</div>
@@ -171,8 +171,8 @@ footer{background:#2C1018;padding:36px 6%;}
       <div class="plan">
         <div class="plan-name">Studio</div>
         <div class="plan-tagline">Pour les petites équipes</div>
-        <div class="plan-price" id="p-stu">39 €<sub> / mois</sub></div>
-        <div class="plan-period" id="per-stu">Facturé 468 €/an</div>
+        <div class="plan-price" id="p-stu">39 € HT<sub> / mois</sub></div>
+        <div class="plan-period" id="per-stu">Facturé 468 € HT/an</div>
         <hr class="plan-divider">
         <div class="plan-section-label">Tout Indépendant, plus :</div>
         <div class="plan-feature"><span class="check">✓</span>Utilisateurs illimités</div>
@@ -185,8 +185,8 @@ footer{background:#2C1018;padding:36px 6%;}
       <div class="plan">
         <div class="plan-name">Entreprise</div>
         <div class="plan-tagline">Pour les structures qui grandissent</div>
-        <div class="plan-price" id="p-ent">69 €<sub> / mois</sub></div>
-        <div class="plan-period" id="per-ent">Facturé 828 €/an</div>
+        <div class="plan-price" id="p-ent">69 € HT<sub> / mois</sub></div>
+        <div class="plan-period" id="per-ent">Facturé 828 € HT/an</div>
         <hr class="plan-divider">
         <div class="plan-section-label">Tout Studio, plus :</div>
         <div class="plan-feature"><span class="check">✓</span>Utilisateurs illimités</div>
@@ -198,8 +198,11 @@ footer{background:#2C1018;padding:36px 6%;}
       </div>
     </div>
 
-    <div style="text-align:center;font-size:13px;color:var(--text-light);margin-bottom:60px;">
+    <div style="text-align:center;font-size:13px;color:var(--text-light);margin-bottom:16px;">
       Paiement sécurisé par Stripe · Sans engagement · Résiliation à tout moment
+    </div>
+    <div style="text-align:center;font-size:12px;color:var(--text-light);margin-bottom:60px;">
+      Tous les prix sont indiqués hors taxes (HT) et soumis à la TVA.
     </div>
   </div>
 </section>
@@ -375,8 +378,8 @@ function toggleBilling(){
   const data={ind:[19,15],stu:[39,31],ent:[69,55]};
   for(const[k,[m,a]] of Object.entries(data)){
     const p=annual?a:m;
-    document.getElementById('p-'+k).innerHTML=p+' €<sub> / mois</sub>';
-    document.getElementById('per-'+k).textContent=annual?'Facturé '+(p*12)+' €/an · -20%':'Facturé '+(m*12)+' €/an';
+    document.getElementById('p-'+k).innerHTML=p+' € HT<sub> / mois</sub>';
+    document.getElementById('per-'+k).textContent=annual?'Facturé '+(p*12)+' € HT/an · -20%':'Facturé '+(m*12)+' € HT/an';
   }
 }
 function toggleFaq(el){
