@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos — Josetine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bordeaux:#6B1F30;--bordeaux-dark:#4a1520;--bordeaux-light:#8B2F42;--creme:#FAF8F5;--creme-dark:#F0EDE8;--text:#2C2018;--text-muted:#7A6E68;--text-light:#A89E98;--border:rgba(107,31,48,0.12);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--creme);color:var(--text);overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,248,245,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 6%;height:66px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--bordeaux);letter-spacing:-0.5px;text-decoration:none;}
+.nav-logo span{font-size:10px;font-family:'DM Sans',sans-serif;font-weight:300;color:var(--text-muted);display:block;letter-spacing:0.18em;text-transform:uppercase;margin-top:-3px;}
+.nav-links{display:flex;align-items:center;gap:36px;}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;font-weight:400;}
+.nav-links a:hover,.nav-links a.active{color:var(--bordeaux);}
+.nav-cta{display:flex;gap:10px;align-items:center;}
+.btn-ghost{padding:9px 22px;border:1px solid var(--border);border-radius:6px;font-size:14px;color:var(--text);background:none;cursor:pointer;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all 0.2s;}
+.btn-ghost:hover{border-color:var(--bordeaux);color:var(--bordeaux);}
+.btn-main{padding:9px 22px;background:var(--bordeaux);color:white;border:none;border-radius:6px;font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;transition:background 0.2s;font-weight:500;}
+.btn-main:hover{background:var(--bordeaux-dark);}
+
+/* HERO */
+.page-hero{padding:130px 6% 70px;background:var(--bordeaux);text-align:center;}
+.page-hero-label{display:inline-block;font-size:11px;font-weight:500;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.16em;margin-bottom:18px;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,4vw,54px);font-weight:500;color:white;margin-bottom:20px;line-height:1.2;}
+.page-hero-sub{font-size:17px;color:rgba(255,255,255,0.65);font-weight:300;max-width:620px;margin:0 auto;line-height:1.7;font-style:italic;font-family:'Playfair Display',serif;}
+
+/* SECTION 1 — HISTOIRE */
+.histoire{background:white;padding:70px 6%;}
+.histoire-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.histoire-quote{background:var(--bordeaux);border-radius:12px;padding:36px 32px;position:relative;}
+.histoire-quote-mark{font-family:'Playfair Display',serif;font-size:80px;color:rgba(255,255,255,0.15);line-height:0.7;margin-bottom:16px;display:block;}
+.histoire-quote-text{font-family:'Playfair Display',serif;font-size:clamp(18px,1.8vw,22px);font-style:italic;color:white;line-height:1.55;margin-bottom:20px;}
+.histoire-quote-author{font-size:13px;color:rgba(255,255,255,0.6);font-weight:400;border-top:1px solid rgba(255,255,255,0.15);padding-top:16px;margin-top:4px;}
+.histoire-quote-author strong{color:rgba(255,255,255,0.9);display:block;font-weight:500;margin-bottom:2px;}
+.histoire-content .section-label{font-size:11px;font-weight:600;color:var(--bordeaux);text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:16px;}
+.histoire-content p{font-size:16px;color:var(--text-muted);line-height:1.85;font-weight:300;}
+
+/* SECTION 2 — PROBLÈME */
+.probleme{background:#F9F5F3;padding:70px 6%;}
+.probleme-inner{max-width:760px;margin:0 auto;}
+.section-label{font-size:11px;font-weight:600;color:var(--bordeaux);text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:16px;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(26px,3vw,38px);font-weight:500;color:var(--text);margin-bottom:20px;line-height:1.25;}
+.section-body{font-size:16px;color:var(--text-muted);line-height:1.85;font-weight:300;}
+
+/* SECTION 3 — TIMELINE */
+.timeline-section{background:white;padding:70px 6%;}
+.timeline-section-inner{max-width:760px;margin:0 auto;}
+.timeline-section-header{margin-bottom:48px;}
+.timeline{position:relative;padding-left:32px;}
+.timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:rgba(107,31,48,0.15);}
+.timeline-item{position:relative;margin-bottom:40px;}
+.timeline-item:last-child{margin-bottom:0;}
+.timeline-dot{position:absolute;left:-32px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bordeaux);border:3px solid white;box-shadow:0 0 0 2px rgba(107,31,48,0.25);}
+.timeline-date{font-size:13px;font-weight:600;color:var(--bordeaux);margin-bottom:6px;letter-spacing:0.04em;}
+.timeline-title{font-size:17px;font-weight:500;color:var(--text);margin-bottom:8px;}
+.timeline-text{font-size:15px;color:var(--text-muted);line-height:1.75;font-weight:300;}
+
+/* SECTION 4 — CONVICTION */
+.conviction{background:#F9F5F3;padding:70px 6%;}
+.conviction-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.conviction-left .section-title{margin-bottom:16px;}
+.conviction-left .section-body{margin-top:16px;}
+.conviction-card{background:white;border:2px solid var(--bordeaux);border-radius:12px;padding:28px;}
+.conviction-card-label{font-size:10px;font-weight:600;color:var(--bordeaux);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:12px;display:block;}
+.conviction-card-text{font-size:15px;color:var(--text-muted);line-height:1.8;font-weight:300;}
+
+/* SECTION 5 — AUJOURD'HUI */
+.aujourdhui{background:white;padding:70px 6%;}
+.aujourdhui-inner{max-width:760px;margin:0 auto;text-align:center;}
+.aujourdhui-inner .section-label{display:block;text-align:center;}
+.aujourdhui-inner .section-title{text-align:center;}
+.aujourdhui-inner .section-body{text-align:center;}
+
+/* CTA */
+.cta-band{background:var(--bordeaux);padding:60px 6%;text-align:center;}
+.cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(26px,2.8vw,38px);font-weight:500;color:white;margin-bottom:12px;}
+.cta-band p{font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:32px;font-weight:300;}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-white{padding:13px 28px;background:white;color:var(--bordeaux);border:none;border-radius:8px;font-size:15px;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;font-weight:500;display:inline-block;transition:opacity 0.2s;}
+.btn-cta-white:hover{opacity:0.9;}
+.btn-cta-outline{padding:13px 28px;border:1.5px solid rgba(255,255,255,0.4);color:white;border-radius:8px;font-size:15px;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;background:none;display:inline-block;transition:all 0.2s;}
+.btn-cta-outline:hover{background:rgba(255,255,255,0.1);}
+
+/* FOOTER */
+footer{background:#2C1018;padding:36px 6%;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:20px;color:rgba(255,255,255,0.85);text-decoration:none;}
+.footer-logo span{font-size:10px;font-family:'DM Sans',sans-serif;color:rgba(255,255,255,0.3);display:block;letter-spacing:0.12em;text-transform:uppercase;}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:white;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.25);}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:200;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;border-radius:16px;padding:40px;width:100%;max-width:420px;margin:16px;position:relative;}
+.modal-logo{font-family:'Playfair Display',serif;font-size:26px;color:var(--bordeaux);margin-bottom:4px;}
+.modal-sub{font-size:13px;color:var(--text-muted);margin-bottom:28px;}
+.m-form-group{margin-bottom:16px;}
+.m-label{font-size:11px;font-weight:500;color:var(--text);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;}
+.m-input{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:8px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--creme);outline:none;transition:border-color 0.2s;}
+.m-input:focus{border-color:var(--bordeaux);}
+.m-btn{width:100%;padding:13px;background:var(--bordeaux);color:white;border:none;border-radius:8px;font-size:15px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;margin-top:8px;transition:background 0.2s;}
+.m-btn:hover{background:var(--bordeaux-dark);}
+.modal-footer-note{text-align:center;margin-top:18px;font-size:13px;color:var(--text-muted);}
+.modal-footer-note a{color:var(--bordeaux);text-decoration:none;font-weight:500;}
+.modal-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:24px;color:var(--text-muted);cursor:pointer;line-height:1;}
+.signup-type-opt.selected{border-color:var(--bordeaux)!important;background:rgba(107,31,48,0.06);color:var(--bordeaux)!important;font-weight:500;}
+
+@media(max-width:900px){
+  .histoire-inner,.conviction-inner{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+@media(max-width:600px){
+  .cta-btns{flex-direction:column;align-items:center;}
+  .timeline{padding-left:24px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Josetine<span>Gestion administrative</span></a>
+  <div class="nav-links">
+    <a href="fonctionnalites.html">Fonctionnalités</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="faq.html">FAQ</a>
+    <a href="apropos.html" class="active">À propos</a>
+  </div>
+  <div class="nav-cta">
+    <a href="#" class="btn-ghost" onclick="openModal('login');return false;">Se connecter</a>
+    <a href="#" class="btn-main" onclick="openModal('signup');return false;">Essai gratuit</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <span class="page-hero-label">À propos</span>
+  <h1>Josetine est née d'une frustration réelle</h1>
+  <p class="page-hero-sub">Pas d'une startup. Pas d'un développeur. D'une professionnelle qui croit profondément au rôle stratégique des assistantes de direction.</p>
+</div>
+
+<!-- SECTION 1 — L'HISTOIRE -->
+<section class="histoire">
+  <div class="histoire-inner">
+    <div class="histoire-quote">
+      <span class="histoire-quote-mark">"</span>
+      <p class="histoire-quote-text">J'ai testé une cinquantaine de logiciels. Aucun ne répondait à notre réalité. Alors je l'ai construit.</p>
+      <div class="histoire-quote-author">
+        <strong>Jessica Mataele</strong>
+        Fondatrice de Josetine
+      </div>
+    </div>
+    <div class="histoire-content">
+      <span class="section-label">L'histoire</span>
+      <p>Avant de créer Josetine, j'ai passé 15 ans dans la banque et l'assurance, spécialisée dans l'optimisation des revenus et la gestion de patrimoine. En 2023, j'ai créé ma propre société d'assistante de direction avec une conviction forte : une assistante de direction n'est pas un simple soutien administratif. Elle est un vrai levier pour le dirigeant — elle pilote, anticipe, structure, et souvent elle est la seule à avoir une vue d'ensemble sur l'entreprise de son client.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 — LE PROBLÈME -->
+<section class="probleme">
+  <div class="probleme-inner">
+    <span class="section-label">Le problème</span>
+    <div class="section-title">Cinquante logiciels testés. Aucun fait pour nous.</div>
+    <p class="section-body">Depuis début 2025, je suis également formatrice : j'accompagne des entreprises de tous secteurs pour optimiser leur gestion, digitaliser leurs process et mettre en place les bons outils. Pour nos clients, il existe des outils pour tout. Pour nous, les assistantes, il existe aussi des outils — mais rien de centralisé. Alors on finit avec Notion pour les procédures, Trello pour les tâches, Clockify pour le temps, Excel pour les mots de passe, un autre tableur pour la facturation... Et on arrête de les utiliser, parce qu'aucun n'est fait pour notre réalité. Ce n'est pas un manque de rigueur. C'est un manque d'outil adapté.</p>
+  </div>
+</section>
+
+<!-- SECTION 3 — TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline-section-inner">
+    <div class="timeline-section-header">
+      <span class="section-label">Le parcours</span>
+      <div class="section-title">15 ans d'expertise au service d'un outil</div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2008</div>
+        <div class="timeline-title">Les débuts en banque &amp; assurance</div>
+        <div class="timeline-text">15 ans de gestion de patrimoine et d'optimisation des revenus. Une expertise financière qui façonne une vision business exigeante.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2023</div>
+        <div class="timeline-title">Création de la société d'assistante de direction</div>
+        <div class="timeline-text">Avec la conviction qu'une assistante de direction est un vrai levier stratégique pour les dirigeants, pas un simple soutien administratif.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2025</div>
+        <div class="timeline-title">Formatrice &amp; experte en digitalisation</div>
+        <div class="timeline-text">Accompagnement d'entreprises de tous secteurs pour optimiser leur gestion et digitaliser leurs process. Test d'une cinquantaine de logiciels.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2025</div>
+        <div class="timeline-title">Naissance de Josetine</div>
+        <div class="timeline-text">Face au vide : des outils pour tout, mais rien de centralisé pour les assistantes. Josetine est créé pour combler ce manque.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 — LA CONVICTION -->
+<section class="conviction">
+  <div class="conviction-inner">
+    <div class="conviction-left">
+      <span class="section-label">La conviction</span>
+      <div class="section-title">Un rôle stratégique qui mérite un outil stratégique</div>
+      <p class="section-body">Une bonne assistante de direction ne fait pas que traiter des dossiers. Elle pilote, anticipe, organise, et parfois elle est la seule à avoir une vue d'ensemble sur l'entreprise de son client. Elle mérite un outil à la hauteur de ce rôle.</p>
+    </div>
+    <div class="conviction-card">
+      <span class="conviction-card-label">La facturation électronique, une opportunité</span>
+      <p class="conviction-card-text">La facturation électronique obligatoire — déjà en marche pour les grandes entreprises, bientôt pour tous — va transformer une partie de notre travail de précomptabilité. Ce n'est pas une menace, c'est une opportunité : se libérer des tâches répétitives pour se concentrer sur ce qui a vraiment de la valeur. Le conseil, le pilotage, la relation client. Josetine est conçu pour accompagner cette montée en compétences.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 — AUJOURD'HUI -->
+<section class="aujourdhui">
+  <div class="aujourdhui-inner">
+    <span class="section-label">Aujourd'hui</span>
+    <div class="section-title">Un logiciel fait par une professionnelle du métier</div>
+    <p class="section-body" style="margin-top:20px;">Josetine est le fruit de deux ans de terrain, de tests, et d'échanges avec des assistantes de tous profils. Pas de grande équipe, pas d'investisseurs à satisfaire — juste une conviction : les assistantes indépendantes méritent un logiciel pensé pour elles, pas un outil généraliste qu'on essaie de faire rentrer dans un usage qu'il n'a pas prévu. Chaque fonctionnalité existe parce qu'elle répond à un vrai besoin, vécu sur le terrain.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <h2>Prête à découvrir Josetine ?</h2>
+  <p>Un outil pensé pour votre réalité, par quelqu'un qui la connaît.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-cta-white" onclick="openModal('signup');return false;">Essayer gratuitement — 0 €</a>
+    <a href="fonctionnalites.html" class="btn-cta-outline">Voir les fonctionnalités</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Josetine<span>Gestion administrative</span></a>
+    <div class="footer-links">
+      <a href="fonctionnalites.html">Fonctionnalités</a>
+      <a href="tarifs.html">Tarifs</a>
+      <a href="faq.html">FAQ</a>
+      <a href="apropos.html">À propos</a>
+      <a href="#">CGU</a>
+    </div>
+    <div class="footer-copy">© 2026 Josetine · Fait avec passion</div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('login')">×</button>
+    <div class="modal-logo">Josetine</div>
+    <div class="modal-sub">Connectez-vous à votre espace</div>
+    <div class="m-form-group"><label class="m-label">Email</label><input type="email" class="m-input" placeholder="votre@email.fr"></div>
+    <div class="m-form-group"><label class="m-label">Mot de passe</label><input type="password" class="m-input" placeholder="••••••••"></div>
+    <button class="m-btn" onclick="window.location.href='https://app.martines.app'">Se connecter</button>
+    <div class="modal-footer-note">Pas encore de compte ? <a href="#" onclick="switchModal('login','signup');return false;">Créer un compte</a></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="signupModal">
+  <div class="modal" id="signup-modal-inner">
+    <button class="modal-close" onclick="closeModal('signup')">×</button>
+    <div class="modal-logo">Josetine</div>
+    <div class="modal-sub">Rejoignez la liste d'attente</div>
+    <div class="m-form-group"><label class="m-label">Prénom</label><input type="text" id="signup-prenom" class="m-input" placeholder="Marie"></div>
+    <div class="m-form-group"><label class="m-label">Nom</label><input type="text" id="signup-nom" class="m-input" placeholder="Martin"></div>
+    <div class="m-form-group"><label class="m-label">Email</label><input type="email" id="signup-email" class="m-input" placeholder="marie@email.fr"></div>
+    <div class="m-form-group">
+      <label class="m-label">Vous êtes *</label>
+      <div id="signup-type-group" style="display:flex;gap:8px;margin-top:4px">
+        <div class="signup-type-opt" data-val="independant" onclick="selectSignupType(this)"
+             style="flex:1;padding:10px 6px;border:1.5px solid rgba(107,31,48,0.15);border-radius:8px;text-align:center;cursor:pointer;font-size:12px;color:#7A6E68;transition:all 0.15s;line-height:1.5">
+          👤 Assistante<br>indépendante
+        </div>
+        <div class="signup-type-opt" data-val="enterprise" onclick="selectSignupType(this)"
+             style="flex:1;padding:10px 6px;border:1.5px solid rgba(107,31,48,0.15);border-radius:8px;text-align:center;cursor:pointer;font-size:12px;color:#7A6E68;transition:all 0.15s;line-height:1.5">
+          🏢 Assistante<br>en entreprise
+        </div>
+      </div>
+    </div>
+    <div id="signup-error" style="font-size:13px;color:#c0392b;margin-bottom:8px;min-height:18px"></div>
+    <button class="m-btn" onclick="submitWaitingList()">Rejoindre la liste d'attente</button>
+    <div class="modal-footer-note">Déjà un compte ? <a href="#" onclick="switchModal('signup','login');return false;">Se connecter</a></div>
+  </div>
+</div>
+
+<script>
+let _selectedType='';
+function openModal(t){document.getElementById(t+'Modal').classList.add('open');}
+function closeModal(t){document.getElementById(t+'Modal').classList.remove('open');}
+function switchModal(a,b){closeModal(a);setTimeout(()=>openModal(b),100);}
+function selectSignupType(el){
+  _selectedType=el.dataset.val;
+  document.querySelectorAll('.signup-type-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+document.querySelectorAll('.modal-overlay').forEach(m=>{m.addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});});
+
+async function submitWaitingList(){
+  const prenom=(document.getElementById('signup-prenom')?.value||'').trim();
+  const nom=(document.getElementById('signup-nom')?.value||'').trim();
+  const email=(document.getElementById('signup-email')?.value||'').trim();
+  const errEl=document.getElementById('signup-error');
+  if(errEl)errEl.textContent='';
+  if(!prenom||!nom||!email||!_selectedType){
+    if(errEl)errEl.textContent=!_selectedType?'Veuillez indiquer votre profil.':'Veuillez remplir tous les champs.';
+    return;
+  }
+  try{
+    const r=await fetch('https://www.martines.app/api/liste-attente',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({prenom,nom,email,type_compte:_selectedType}),
+    });
+    const data=await r.json().catch(()=>({}));
+    if(r.ok){
+      document.getElementById('signup-modal-inner').innerHTML=`
+        <div style="text-align:center;padding:24px 0">
+          <div style="font-size:2.5rem;margin-bottom:16px">🎉</div>
+          <div class="modal-logo">Josetine</div>
+          <p style="margin-top:16px;font-size:1rem;color:var(--text);line-height:1.7;max-width:300px;margin-left:auto;margin-right:auto">
+            Merci&nbsp;! Vous êtes sur notre liste d'attente, nous vous contacterons très bientôt.
+          </p>
+          <button class="m-btn" style="margin-top:24px" onclick="closeModal('signup')">Fermer</button>
+        </div>`;
+    }else{
+      if(errEl)errEl.textContent=data.error||'Une erreur est survenue, réessayez.';
+    }
+  }catch(e){
+    if(errEl)errEl.textContent='Impossible de se connecter. Réessayez.';
+  }
+}
+</script>
+</body>
+</html>
