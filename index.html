@@ -244,22 +244,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .why-title { font-size: 17px; font-weight: 500; color: white; margin-bottom: 10px; }
 .why-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; }
 
-/* CONTACT */
-.contact { padding: 80px 6%; background: var(--creme-dark); }
-.contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-.contact-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 40px); font-weight: 500; margin-bottom: 14px; }
-.contact-inner p { font-size: 16px; color: var(--text-muted); margin-bottom: 36px; font-weight: 300; line-height: 1.7; }
-.contact-form { background: white; border-radius: 16px; padding: 36px; border: 1px solid var(--border); text-align: left; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.form-group { margin-bottom: 16px; }
-.form-group.full { grid-column: 1/-1; }
-.form-label { font-size: 11px; font-weight: 500; color: var(--text); display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
-.form-input { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--creme); outline: none; transition: border-color 0.2s; }
-.form-input:focus { border-color: var(--bordeaux); }
-textarea.form-input { resize: vertical; min-height: 110px; }
-.form-btn { width: 100%; padding: 13px; background: var(--bordeaux); color: white; border: none; border-radius: 8px; font-size: 15px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: background 0.2s; margin-top: 4px; }
-.form-btn:hover { background: var(--bordeaux-dark); }
-
 /* CTA BAND */
 .cta-band { background: var(--bordeaux-dark); padding: 60px 6%; text-align: center; }
 .cta-band h2 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 2.5vw, 36px); font-weight: 500; color: white; margin-bottom: 12px; }
@@ -312,7 +296,6 @@ footer { background: #2C1018; padding: 36px 6%; }
   <div class="nav-links">
     <a href="fonctionnalites.html">Fonctionnalités</a>
     <a href="tarifs.html">Tarifs</a>
-    <a href="#contact">Contact</a>
   </div>
   <div class="nav-cta">
     <a href="#" class="btn-ghost" onclick="openModal('login');return false;">Se connecter</a>
@@ -393,21 +376,6 @@ footer { background: #2C1018; padding: 36px 6%; }
   </div>
 </section>
 
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <h2>Nous contacter</h2>
-    <p>Une question, une suggestion, ou envie d'en savoir plus ? Écrivez-nous, nous répondons sous 24h.</p>
-    <div class="contact-form">
-      <div class="form-row">
-        <div class="form-group"><label class="form-label">Prénom</label><input type="text" class="form-input" placeholder="Marie"></div>
-        <div class="form-group"><label class="form-label">Nom</label><input type="text" class="form-input" placeholder="Martin"></div>
-      </div>
-      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="marie@email.fr"></div>
-      <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" placeholder="Votre message..."></textarea></div>
-      <button class="form-btn">Envoyer le message</button>
-    </div>
-  </div>
-</section>
 
 <section class="cta-band">
   <h2>Prête à simplifier votre quotidien ?</h2>
@@ -424,7 +392,6 @@ footer { background: #2C1018; padding: 36px 6%; }
     <div class="footer-links">
       <a href="fonctionnalites.html">Fonctionnalités</a>
       <a href="tarifs.html">Tarifs</a>
-      <a href="#contact">Contact</a>
       <a href="#">CGU</a>
     </div>
     <div class="footer-copy">© 2026 Josetine · Fait avec passion</div>
