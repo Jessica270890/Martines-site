@@ -32,10 +32,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,248,245,
 /* SECTION 1 — HISTOIRE */
 .histoire{background:white;padding:70px 6%;}
 .histoire-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
-.histoire-quote{background:var(--bordeaux);border-radius:12px;padding:36px 32px;position:relative;}
-.histoire-quote-mark{font-family:'Playfair Display',serif;font-size:80px;color:rgba(255,255,255,0.15);line-height:0.7;margin-bottom:16px;display:block;}
-.histoire-quote-text{font-family:'Playfair Display',serif;font-size:clamp(18px,1.8vw,22px);font-style:italic;color:white;line-height:1.55;margin-bottom:20px;}
-.histoire-quote-author{font-size:13px;color:rgba(255,255,255,0.6);font-weight:400;border-top:1px solid rgba(255,255,255,0.15);padding-top:16px;margin-top:4px;}
+.histoire-left{display:flex;flex-direction:column;}
+.histoire-photo{width:100%;max-width:380px;border-radius:12px;object-fit:cover;object-position:center top;display:block;}
+.histoire-quote{background:var(--bordeaux);border-radius:12px;padding:20px;margin-top:16px;max-width:380px;}
+.histoire-quote-mark{font-family:'Playfair Display',serif;font-size:64px;color:rgba(255,255,255,0.22);line-height:0.75;margin-bottom:10px;display:block;}
+.histoire-quote-text{font-family:'Playfair Display',serif;font-size:clamp(15px,1.5vw,18px);font-style:italic;color:white;line-height:1.55;margin-bottom:16px;}
+.histoire-quote-author{font-size:12px;color:rgba(255,255,255,0.6);font-weight:400;border-top:1px solid rgba(255,255,255,0.15);padding-top:12px;}
 .histoire-quote-author strong{color:rgba(255,255,255,0.9);display:block;font-weight:500;margin-bottom:2px;}
 .histoire-content .section-label{font-size:11px;font-weight:600;color:var(--bordeaux);text-transform:uppercase;letter-spacing:0.14em;display:block;margin-bottom:16px;}
 .histoire-content p{font-size:16px;color:var(--text-muted);line-height:1.85;font-weight:300;}
@@ -149,14 +151,17 @@ footer{background:#2C1018;padding:36px 6%;}
 <!-- SECTION 1 — L'HISTOIRE -->
 <section class="histoire">
   <div class="histoire-inner">
-    <div class="histoire-quote">
-      <span class="histoire-quote-mark">"</span>
-      <p class="histoire-quote-text">J'ai testé une cinquantaine de logiciels. Aucun ne répondait à notre réalité. Alors je l'ai construit.</p>
-      <div class="histoire-quote-author">
-        <strong>Jessica Mataele</strong>
-        Fondatrice de Josetine
+    <div class="histoire-left">
+      <img src="images/jessica2.jpg" alt="Jessica Mataele, fondatrice de Josetine" class="histoire-photo">
+      <div class="histoire-quote">
+        <span class="histoire-quote-mark">"</span>
+        <p class="histoire-quote-text">J'ai testé une cinquantaine de logiciels. Aucun ne répondait à notre réalité. Alors je l'ai construit.</p>
+        <div class="histoire-quote-author">
+          <strong>Jessica Mataele</strong>
+          Fondatrice de Josetine
+        </div>
       </div>
-    </div>
+    </div><!-- /histoire-left -->
     <div class="histoire-content">
       <span class="section-label">L'histoire</span>
       <p>Avant de créer Josetine, j'ai passé 15 ans dans la banque et l'assurance, spécialisée dans l'optimisation des revenus et la gestion de patrimoine. En 2023, j'ai créé ma propre société d'assistante de direction avec une conviction forte : une assistante de direction n'est pas un simple soutien administratif. Elle est un vrai levier pour le dirigeant — elle pilote, anticipe, structure, et souvent elle est la seule à avoir une vue d'ensemble sur l'entreprise de son client.</p>
