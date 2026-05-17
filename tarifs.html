@@ -188,25 +188,31 @@ footer{background:#2C1018;padding:36px 6%;}
 
       <div class="plan">
         <div class="plan-name">Entreprise</div>
-        <div class="plan-tagline">Pour les structures qui grandissent</div>
-        <div class="plan-price" id="p-ent">69 € HT<sub> / mois</sub></div>
-        <div class="plan-period" id="per-ent">Facturé 828 € HT/an</div>
+        <div class="plan-tagline">Pour les assistantes salariées en entreprise</div>
+        <div class="plan-price" id="p-ent">25 € HT<sub> / mois</sub></div>
+        <div class="plan-period" id="per-ent">Facturé 300 € HT/an</div>
         <hr class="plan-divider">
-        <div class="plan-section-label">Tout Studio, plus :</div>
-        <div class="plan-feature"><span class="check">✓</span>Utilisateurs illimités</div>
-        <div class="plan-feature"><span class="check">✓</span>Onboarding dédié</div>
-        <div class="plan-feature"><span class="check">✓</span>Accompagnement mensuel</div>
-        <div class="plan-feature"><span class="check">✓</span>Formation équipe incluse</div>
-        <div class="plan-feature"><span class="check">✓</span>SLA garanti</div>
+        <div class="plan-section-label">Inclus</div>
+        <div class="plan-feature"><span class="check">✓</span>Interface dédiée assistante salariée</div>
+        <div class="plan-feature"><span class="check">✓</span>Gestion par entités internes</div>
+        <div class="plan-feature"><span class="check">✓</span>Fournisseurs &amp; suivi vérifications</div>
+        <div class="plan-feature"><span class="check">✓</span>Tâches &amp; échéances</div>
+        <div class="plan-feature"><span class="check">✓</span>Module RH complet (employés, absences, onboarding)</div>
+        <div class="plan-feature"><span class="check">✓</span>Module contentieux &amp; litiges</div>
+        <div class="plan-feature"><span class="check">✓</span>Agenda intégré</div>
+        <div class="plan-feature"><span class="check">✓</span>Documentation interne</div>
         <div class="plan-btn btn-outline-plan"><a href="#" onclick="openSignupForPlan('Entreprise');return false;">Nous contacter</a></div>
       </div>
     </div>
 
-    <div style="text-align:center;font-size:13px;color:var(--text-light);margin-bottom:16px;">
+    <div style="text-align:center;font-size:13px;color:var(--text-light);margin-bottom:8px;">
       Paiement sécurisé par Stripe · Sans engagement · Résiliation à tout moment
     </div>
-    <div style="text-align:center;font-size:12px;color:var(--text-light);margin-bottom:60px;">
+    <div style="text-align:center;font-size:12px;color:var(--text-light);margin-bottom:12px;">
       Tous les prix sont indiqués hors taxes (HT) et soumis à la TVA.
+    </div>
+    <div style="text-align:center;font-size:12px;color:var(--bordeaux);max-width:600px;margin:0 auto 60px;line-height:1.6;">
+      Les plans Indépendant/Studio et le plan Entreprise sont deux interfaces distinctes, conçues pour deux métiers différents. Vous ne pouvez pas passer de l'un à l'autre.
     </div>
   </div>
 </section>
@@ -381,7 +387,7 @@ function toggleBilling(){
   thumb.className='toggle-thumb'+(annual?' right':'');
   document.getElementById('label-monthly').className='toggle-label'+(annual?'':' on');
   document.getElementById('label-annual').className='toggle-label'+(annual?' on':'');
-  const data={ind:[19,15],stu:[39,31],ent:[69,55]};
+  const data={ind:[19,15],stu:[39,31],ent:[25,20]};
   for(const[k,[m,a]] of Object.entries(data)){
     const p=annual?a:m;
     document.getElementById('p-'+k).innerHTML=p+' € HT<sub> / mois</sub>';
